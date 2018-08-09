@@ -19,9 +19,9 @@ class ClientMqtt : NSObject {
     var qiscusClientID          = "3657668"
     var hostRealtimeServer      = "mqtt.qiscus.com"
     var port                    = 1883
-    var QiscusClientEmail       = "userid_8898_628681011193@kiwari-prod.com"
+    var QiscusClientEmail       = "userid_117_6285727170251@kiwari-prod.com"
     var QiscusClientRealtimeSSL = false
-    var token = "0mthTZCsFNbz8ju2QtJ0"
+    var token = "r962G25wRIXcchK8LTVc"
     var roomId = 947598
     
     override init() {
