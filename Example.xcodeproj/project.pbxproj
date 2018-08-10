@@ -246,7 +246,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 04C345382113FF8B004B0592 /* Build configuration list for PBXProject "mqttLib" */;
+			buildConfigurationList = 04C345382113FF8B004B0592 /* Build configuration list for PBXProject "Example" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -334,6 +334,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-example/Pods-example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaMQTT/CocoaMQTT.framework",
+				"${BUILT_PRODUCTS_DIR}/QiscusRealtime/QiscusRealtime.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyTimer/SwiftyTimer.framework",
 			);
@@ -341,6 +342,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaMQTT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QiscusRealtime.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyTimer.framework",
 			);
@@ -617,7 +619,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		04C345382113FF8B004B0592 /* Build configuration list for PBXProject "mqttLib" */ = {
+		04C345382113FF8B004B0592 /* Build configuration list for PBXProject "Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04C345502113FF8B004B0592 /* Debug */,

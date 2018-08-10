@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import SwiftyJSON
-import mqttLib
+import QiscusRealtime
 
 class MainApp {
     public static let shared = MainApp()

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import mqttLib
+import QiscusRealtime
 
 class exampleCell: UITableViewCell{
     @IBOutlet weak var roomName: UILabel!

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import mqttLib
+import QiscusRealtime
 import SwiftyJSON
 
 class QComment {

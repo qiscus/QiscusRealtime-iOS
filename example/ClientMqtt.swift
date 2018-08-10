@@ -7,12 +7,12 @@
 //
 
 import Foundation
-import mqttLib
+import QiscusRealtime
 import SwiftyJSON
 
 class ClientMqtt : NSObject {
     
-    private var client : QiscusRealtimeLib!
+    private var client : QiscusRealtime!
     
     var appName                 = "Kiwari"
     var deviceID                = "A56B0E70-A082-426C-90B7-233A1BCFFA11"
@@ -27,7 +27,7 @@ class ClientMqtt : NSObject {
     override init() {
         super.init()
         let config  = QiscusRealtimeConfig.init(appName: appName, qiscusClientID: qiscusClientID, token: token, QiscusClientEmail: QiscusClientEmail, hostRealtimeServer: hostRealtimeServer, port: port, QiscusClientRealtimeSSL: QiscusClientRealtimeSSL)
-        self.client = QiscusRealtimeLib.init(withConfig: config)
+        self.client = QiscusRealtime.init(withConfig: config)
     }
     
     func setupRealtimeRoomPrivate(roomId: [String]){
