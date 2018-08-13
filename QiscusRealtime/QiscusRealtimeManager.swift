@@ -12,7 +12,6 @@ import SwiftyJSON
 // Qiscus wrapper
 class QiscusRealtimeManager {
     var delegate    : QiscusRealtimeDelegate? = nil
-    var connectionDelegate :  QiscusRealtimeConnectionDelegate? = nil
     var config      : QiscusRealtimeConfig!
     var user        : QiscusRealtimeUser?   = nil
     var mqttClient  : MqttClient!
@@ -119,8 +118,8 @@ class QiscusRealtimeManager {
     }
     
     
-    func connect(username: String, password: String, delegate: QiscusRealtimeConnectionDelegate? = nil){
-        self.connectionDelegate = delegate
+    func connect(username: String, password: String, delegate: QiscusRealtimeDelegate? = nil){
+        self.delegate = delegate
         let connecting = mqttClient.connect(username: username, password: password)
         if connecting {
             self.user   = QiscusRealtimeUser(email: username, token: password, deviceID: "")

@@ -8,6 +8,11 @@
 import Foundation
 import CocoaMQTT
 
+enum realtimeTopic {
+    case comment(token: String)
+    case typing(roomId: String,userId: String)
+}
+
 class MqttClient {
     var client    : CocoaMQTT
     var connectionState : QiscusRealtimeConnectionState = .disconnected
@@ -20,6 +25,8 @@ class MqttClient {
             }
         }
     }
+    
+    
     
     init(clientID: String, host: String, port: UInt16) {
         client = CocoaMQTT.init(clientID: clientID, host: host, port: port)

@@ -15,14 +15,10 @@ public enum QiscusRealtimeConnectionState : String{
     case disconnected   = "disconnected"
 }
 
-public protocol QiscusRealtimeConnectionDelegate {
+public protocol QiscusRealtimeDelegate {
     func disconnect(withError err: Error?)
     func connected()
     func connectionState(change state: QiscusRealtimeConnectionState)
-}
-
-
-public protocol QiscusRealtimeDelegate {
     
     /// You will receive from qiscus realtime about user status
     ///

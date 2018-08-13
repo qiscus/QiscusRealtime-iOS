@@ -41,14 +41,9 @@ public class QiscusRealtime {
     ///   - username: qiscus user email
     ///   - password: qiscus token
     ///   - delegate: set delegate to get the event
-    public func connect(username: String, password: String, delegate: QiscusRealtimeConnectionDelegate? = nil){
+    public func connect(username: String, password: String, delegate: QiscusRealtimeDelegate? = nil){
         manager.connect(username: username, password: password, delegate: delegate)
     }
-    
-//    public func setDelegateQiscusRealtime(){
-//        delegate: QiscusRealtimeDelegate? = nil
-//    }
-    
     
     /// this func to setup realtime room private
     ///
@@ -74,9 +69,9 @@ public class QiscusRealtime {
     
     
     /// this func to unsubcribeRoomChannel
-    public func unsubscribeRoomChannel(){
-//        return qiscusRealtimeManager.unsubscribeRoomChannel()
-    }
+//    public func unsubscribeRoomChannel(){
+////        return qiscusRealtimeManager.unsubscribeRoomChannel()
+//    }
     
     
     /// this func to disconnect qiscus realtime
