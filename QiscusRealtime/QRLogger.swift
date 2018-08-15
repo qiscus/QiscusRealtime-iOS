@@ -9,13 +9,13 @@ import Foundation
 
 class QRLogger {
     static func debugPrint(_ text: String) {
-        if QiscusRealtime.enableDebugPrint {
+        //if QiscusRealtimeManager.shared.enableDebugPrint {
             QRLogger.debugPrint("[QiscusRealtime] \(text)")
-        }
+        //}
     }
     
     static func errorPrint(_ text: String) {
-        if QiscusRealtime.enableDebugPrint {
+        if QiscusRealtimeManager.shared.enableDebugPrint {
             QRLogger.debugPrint("[QiscusRealtime] Error: \(text)")
         }
     }
