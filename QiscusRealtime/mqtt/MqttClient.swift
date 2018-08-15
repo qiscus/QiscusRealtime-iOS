@@ -44,7 +44,12 @@ class MqttClient {
     }
     
     func subscribe(_ topic: String) {
-        client.subscribe(topic, qos: .qos0)
+        if self.connectionState == .connected {
+            client.subscribe(topic, qos: .qos0)
+        }else {
+            // delay subscribe
+            QRLogger.debugPrint("delay subscribe \(topic)")
+        }
     }
     
     func unsubscribe(_ topic: String) {
@@ -111,13 +116,17 @@ extension MqttClient: CocoaMQTTDelegate {
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
+    
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didPublishAck id: UInt16) {
+    
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16 ) {
-//        if let messageData = message.string {
+        if let messageData = message.string {
+         QRLogger.debugPrint("receive \(messageData)")
+        }
 //            let channelArr = message.topic.split(separator: "/")
 //            let lastChannelPart = String(channelArr.last!)
 //            switch lastChannelPart {
@@ -181,7 +190,7 @@ extension MqttClient: CocoaMQTTDelegate {
 //                let commentId = Int(String(messageArr[0]))!
 //                let userEmail = String(channelArr[3])
 //
-//                print("cek \(commentId)")
+//                QRLogger.debugPrint("cek \(commentId)")
 //
 //                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
 //                    self.delegate.didReceiveMessageStatus(roomId: roomId, commentId: commentId, Status: .read)
@@ -205,30 +214,30 @@ extension MqttClient: CocoaMQTTDelegate {
 //
 //                break
 //            default:
-//                print( "Realtime socket receive message in unknown topic: \(message.topic)")
+//                QRLogger.debugPrint( "Realtime socket receive message in unknown topic: \(message.topic)")
 //                break
 //            }
 //        }
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topic: String) {
-//        print("topic: \(topic)")
+        QRLogger.debugPrint("topic: \(topic)")
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopic topic: String) {
-//        print("topic: \(topic)")
+        QRLogger.debugPrint("topic: \(topic)")
     }
     
     func mqttDidPing(_ mqtt: CocoaMQTT) {
-//        print("mqtt didPing")
+//        QRLogger.debugPrint("mqtt didPing")
     }
     
     func mqttDidReceivePong(_ mqtt: CocoaMQTT) {
-//        print("mqtt didReceivePong")
+//        QRLogger.debugPrint("mqtt didReceivePong")
     }
     
     func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
-//        print("\(err?.localizedDescription)")
+//        QRLogger.debugPrint("\(err?.localizedDescription)")
 //        self.realtimeConnect = false
 //        self.stopPublishOnlineStatus()
     }

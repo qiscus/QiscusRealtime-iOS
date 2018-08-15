@@ -11,6 +11,7 @@ import SwiftyJSON
 
 public class QiscusRealtime {
     private let manager : QiscusRealtimeManager
+    public static var enableDebugPrint: Bool = false
     public var isConnect : Bool {
         return manager.isConnected
     }
@@ -45,7 +46,7 @@ public class QiscusRealtime {
         manager.connect(username: username, password: password, delegate: delegate)
     }
     
-    public func subscribe(endpoint: RealtimeEndpoint) {
+    public func subscribe(endpoint: RealtimeSubscribeEndpoint) {
         manager.subscribe(type: endpoint)
     }
     

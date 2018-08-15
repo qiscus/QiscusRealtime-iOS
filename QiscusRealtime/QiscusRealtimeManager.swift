@@ -9,69 +9,57 @@
 import Foundation
 import SwiftyJSON
 
-protocol QREndpoint {
-    var topic   : String { get }
-    var payload : String { get }
-}
+//protocol QREndpoint {
+//    var topic   : String { get }
+//    var payload : String { get }
+//}
 
 
-public enum RealtimeEndpoint {
+public enum RealtimeSubscribeEndpoint {
     case comment(token: String)
-    case typing(roomID: String, userEmail: String?)
+    // publish online status
+    case onlineStatus(user: String)
+    // get typing inside room
+    case typing(roomID: String)
+    // delivery or receive comment inside room
+    case delivery(roomID: String)
+    // read comment inside room
+    case read(roomID: String)
 }
-
-extension RealtimeEndpoint: QREndpoint {
-    var topic: String {
-        switch self {
-        case .comment(let token):
-            return "\(token)/c"
-        case .typing(let roomID, _):
-            return "r/\(roomID)/\(roomID)/+/t"
-        }
-    }
-    
-    var payload: String {
-        switch self {
-        case .typing(let roomID, let user):
-            return "r/\(roomID)/\(roomID)/\(user ?? "")/t"
-        default:
-            return ""
-        }
-    }
-
-}
-
-class QRRouter<QREndpoint,MqttClient> {
-    func subcribe() {
-        
-    }
-    
-    func publish() {
-        
-    }
+public enum RealtimePublishEndpoint {
+    // publish online status
+    case onlineStatus(value: Bool)
+    // publish typing in room
+    case isTyping(value: Bool, roomID: String, userEmail: String)
 }
 
 struct RealtimeSubscriber {
-    static func topic(endpoint: RealtimeEndpoint) -> String {
+    static func topic(endpoint: RealtimeSubscribeEndpoint) -> String {
         switch endpoint {
         case .comment(let token):
             return "\(token)/c"
-        case .typing(let roomID, _):
+        case .onlineStatus(let user):
+            return "u/\(user)/s"
+        case .typing(let roomID):
             return "r/\(roomID)/\(roomID)/+/t"
+        case .delivery(let roomID):
+            return "r/\(roomID)/\(roomID)/+/d"
+        case .read(let roomID):
+            return "r/\(roomID)/\(roomID)/+/r"
         }
     }
 }
 
-struct RealtimePublisher {
-    static func payload(endpoint: RealtimeEndpoint) -> String{
-        switch endpoint {
-        case .typing(let roomID, let user):
-            return "r/\(roomID)/\(roomID)/\(user)/t"
-        default:
-            break
-        }
-    }
-}
+//struct RealtimePublisher {
+//    static func payload(endpoint: RealtimeEndpoint) -> String{
+//        switch endpoint {
+//        case .typing(let roomID, let user):
+//            return "r/\(roomID)/\(roomID)/\(user)/t"
+//        default:
+//            break
+//        }
+//    }
+//}
 
 // Qiscus wrapper
 class QiscusRealtimeManager {
@@ -149,23 +137,23 @@ class QiscusRealtimeManager {
         mqttClient.disconnect()
     }
     
-    func publish(type: RealtimeEndpoint) {
-        switch type {
-        case .typing(_, _):
-            let topic = RealtimeSubscriber.topic(endpoint: type)
-            let payload = RealtimePublisher.payload(endpoint: type)
-            mqttClient.publish(topic, message: payload)
-        default:
-            break
-        }
+    func publish() {
+//        switch type {
+//        case .typing(_, _):
+//            let topic = RealtimeSubscriber.topic(endpoint: type)
+//            let payload = RealtimePublisher.payload(endpoint: type)
+//            mqttClient.publish(topic, message: payload)
+//        default:
+//            break
+//        }
     }
     
-    func subscribe(type: RealtimeEndpoint) {
+    func subscribe(type: RealtimeSubscribeEndpoint) {
         let topic = RealtimeSubscriber.topic(endpoint: type)
         mqttClient.subscribe(topic)
     }
     
-    func unsubscribe(type: RealtimeEndpoint) {
+    func unsubscribe(type: RealtimeSubscribeEndpoint) {
         let topic = RealtimeSubscriber.topic(endpoint: type)
         mqttClient.subscribe(topic)
     }
