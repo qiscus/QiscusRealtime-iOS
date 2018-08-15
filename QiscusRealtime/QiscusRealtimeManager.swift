@@ -63,8 +63,6 @@ struct RealtimeSubscriber {
 
 // Qiscus wrapper
 class QiscusRealtimeManager {
-    static var shared       : QiscusRealtimeManager = QiscusRealtimeManager()
-    var enableDebugPrint    : Bool = false
     var delegate            : QiscusRealtimeDelegate? = nil
     var config               : QiscusRealtimeConfig?    = nil
     var user                : QiscusRealtimeUser?   = nil
@@ -130,7 +128,7 @@ class QiscusRealtimeManager {
         }
     }
     
-    func setup(withConfig c: QiscusRealtimeConfig) {
+    init(withConfig c: QiscusRealtimeConfig) {
         config          = c
         mqttClient     = MqttClient(clientID: c.clientID, host: c.hostRealtimeServer, port: c.port)
     }
@@ -150,18 +148,19 @@ class QiscusRealtimeManager {
 //        }
     }
     
-    func subscribe(type: RealtimeSubscribeEndpoint) {
+    func subscribe(type: RealtimeSubscribeEndpoint) -> Bool {
         let topic = RealtimeSubscriber.topic(endpoint: type)
-        mqttClient.subscribe(topic)
+        return mqttClient.subscribe(topic)
     }
     
     func unsubscribe(type: RealtimeSubscribeEndpoint) {
         let topic = RealtimeSubscriber.topic(endpoint: type)
-        mqttClient.subscribe(topic)
+        mqttClient.unsubscribe(topic)
     }
 
     func connect(username: String, password: String, delegate: QiscusRealtimeDelegate? = nil){
         self.delegate = delegate
+        mqttClient.delegate = delegate
         let connecting = mqttClient.connect(username: username, password: password)
         if connecting {
             self.user   = QiscusRealtimeUser(email: username, token: password, deviceID: "")

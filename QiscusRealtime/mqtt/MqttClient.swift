@@ -8,14 +8,19 @@
 import Foundation
 import CocoaMQTT
 
-enum realtimeTopic {
-    case comment(token: String)
-    case typing(roomId: String,userId: String)
+enum QREventType {
+    case comment
+    case typing
+    case online
+    case read
+    case delivery
+    case undefined
 }
 
 class MqttClient {
-    var client    : CocoaMQTT
-    var connectionState : QiscusRealtimeConnectionState = .disconnected
+    var client              : CocoaMQTT
+    var delegate            : QiscusRealtimeDelegate? = nil
+    var connectionState     : QiscusRealtimeConnectionState = .disconnected
     var isConnect : Bool {
         get {
             if connectionState == .connected {
@@ -43,12 +48,14 @@ class MqttClient {
         client.publish(topic, withString: message)
     }
     
-    func subscribe(_ topic: String) {
+    func subscribe(_ topic: String) -> Bool {
         if self.connectionState == .connected {
             client.subscribe(topic, qos: .qos0)
+            return true
         }else {
             // delay subscribe
             QRLogger.debugPrint("delay subscribe \(topic)")
+            return false
         }
     }
     
@@ -59,6 +66,51 @@ class MqttClient {
     func disconnect(){
         self.client.disconnect()
     }
+    
+    private func getEventType(topic: String) -> QREventType {
+        // MARK: TODO check other type
+        let word = topic.components(separatedBy: "/")
+        // follow this doc https://quip.com/JpRjA0qjmINd
+        if word.count == 2 {
+            // probably new comment
+            if word[1] == "c" {
+                return QREventType.comment
+            }else {
+                return QREventType.undefined
+            }
+        }else if word.count == 5 {
+            // probably deliverd or read
+            return QREventType.delivery
+        }else {
+            return QREventType.undefined
+        }
+    }
+    
+//    private func getRoomID(data: String, type: QREventType) -> String {
+//        var id = ""
+//        switch type {
+//        case .comment:
+//            id = getRoomID(fromComment: data)
+//        case .delivery:
+//
+//        default:
+//            return id
+//        }
+//        return id
+//    }
+    
+    private func getRoomID(fromTopic: String) -> String {
+        var id = ""
+        
+        return id
+    }
+    
+    private func getRoomID(fromComment: String) -> String {
+        var id = ""
+        
+        return id
+    }
+    
 }
 
 extension MqttClient: CocoaMQTTDelegate {
@@ -68,51 +120,12 @@ extension MqttClient: CocoaMQTTDelegate {
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
-        let state = UIApplication.shared.applicationState
-        let activeState = (state == .active)
-        
-//        if ack == .accept {
-//            self.realtimeConnect = true
-//
-//            let commentChannel = "\(config.token)/c"
-//            mqtt.subscribe(commentChannel, qos: .qos2)
-//
-//            let eventChannel = "\(config.token)/n"
-//            mqtt.subscribe(eventChannel, qos: .qos2)
-//
-//            if self.participantEmail?.count != 0 && self.participantEmail != nil{
-//                for email in self.participantEmail! {
-//                    mqtt.subscribe("u/\(email)/s")
-//                }
-//            }
-//
-//            if self.roomsPrivateChannel?.count != 0 && self.roomsPrivateChannel != nil{
-//                for roomId in self.roomsPrivateChannel! {
-//                    mqtt.subscribe("r/\(roomId)/\(roomId)/+/t")
-//                    mqtt.subscribe("r/\(roomId)/\(roomId)/+/d")
-//                    mqtt.subscribe("r/\(roomId)/\(roomId)/+/r")
-//                }
-//            }
-//
-//            if self.roomsPublicChannel?.count != 0 && self.roomsPublicChannel != nil{
-//                for uniqueId in self.roomsPublicChannel! {
-//                    mqtt.subscribe("\(config.qiscusClientID)/\(uniqueId)/c")
-//                }
-//            }
-//
-//            if activeState {
-//                self.startPublishOnlineStatus()
-//            }
-//
-//            self.mqtt = mqtt
-//
-//        }
-        
-        
+//        let state = UIApplication.shared.applicationState
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didStateChangeTo state: CocoaMQTTConnState) {
         self.connectionState = QiscusRealtimeConnectionState(rawValue: state.description)!
+        self.delegate?.connectionState(change: QiscusRealtimeConnectionState(rawValue: self.connectionState.rawValue) ?? .disconnected)
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
@@ -124,108 +137,37 @@ extension MqttClient: CocoaMQTTDelegate {
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16 ) {
+
         if let messageData = message.string {
-         QRLogger.debugPrint("receive \(messageData)")
+            QRLogger.debugPrint("didReceiveMessage \n===== topic: \(message.topic) \n===== data: \(messageData)")
+            let type = getEventType(topic: message.topic)
+            switch type {
+            case .comment:
+//                let id = getRoomID(fromComment: messageData)
+                self.delegate?.didReceiveMessage(data: messageData)
+            case .typing:
+                let id = getRoomID(fromTopic: message.topic)
+                self.delegate?.updateUserTyping(roomId: id, userEmail: "")
+                break
+            case .online:
+                break
+            case .read:
+                break
+            case .delivery:
+                break
+            case .undefined:
+                break
+            }
+            
         }
-//            let channelArr = message.topic.split(separator: "/")
-//            let lastChannelPart = String(channelArr.last!)
-//            switch lastChannelPart {
-//            case "n":
-//                let json = JSON(parseJSON:messageData)
-//                let roomId = "\(json["room_id"])"
-//                self.delegate.didReceiveMessageEvent(roomId: roomId, message: messageData)
-//                break
-//            case "c":
-//                let json = JSON(parseJSON:messageData)
-//                let roomId = "\(json["room_id"])"
-//                let commentId = json["id"].intValue
-//                let text      = json["message"].string ?? ""
-//
-//                let commentType = json["type"].stringValue
-//                if commentType == "system_event" {
-//                    let payload = json["payload"]
-//                    let type = payload["type"].stringValue
-//                    if type == "remove_member" || type == "left_room"{
-//                        if payload["object_email"].stringValue == config.QiscusClientEmail {
-//                            self.unsubscribeRoomId(roomId: roomId)
-//                        }
-//                    }
-//                }
-//
-//                self.delegate.didReceiveMessageComment(roomId: roomId, message: messageData)
-//
-//                break
-//            case "t":
-//                let roomId = String(channelArr[2])
-//                let userEmail:String = String(channelArr[3])
-//                let data = (messageData == "0") ? "" : userEmail
-//
-//                func startTypingNotification(){
-//                    DispatchQueue.main.async {
-//                        let typing = (messageData == "0") ? false : true
-//                        QiscusNotification.publish(userTyping: userEmail, roomId: roomId, typing: typing)
-//                        self.delegate.updateUserTyping(roomId: roomId,userEmail: data)
-//                    }
-//                }
-//
-//                if userEmail != config.QiscusClientEmail {
-//                    startTypingNotification()
-//                }
-//                break
-//            case "d":
-//                let roomId = String(channelArr[2])
-//                let messageArr = messageData.split(separator: ":")
-//                let commentId = Int(String(messageArr[0]))!
-//                let userEmail = String(channelArr[3])
-//
-//                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
-//                    self.delegate.didReceiveMessageStatus(roomId: roomId, commentId: commentId, Status: .delivered)
-//                }
-//
-//                break
-//            case "r":
-//                let roomId = String(channelArr[2])
-//                let messageArr = messageData.split(separator: ":")
-//                let commentUid = String(messageArr.last!)
-//                let commentId = Int(String(messageArr[0]))!
-//                let userEmail = String(channelArr[3])
-//
-//                QRLogger.debugPrint("cek \(commentId)")
-//
-//                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
-//                    self.delegate.didReceiveMessageStatus(roomId: roomId, commentId: commentId, Status: .read)
-//                }
-//
-//
-//                break
-//            case "s":
-//                let roomId = String(channelArr[2])
-//                let messageArr = messageData.split(separator: ":")
-//                if messageArr.count > 1 {
-//                    let userEmail = String(channelArr[1])
-//                    let presenceString = String(messageArr[0])
-//
-//                    if let timeToken = Double(String(messageArr[1])){
-//                        self.lastSeen = timeToken/1000
-//                        self.delegate.didReceiveUserStatus(roomId : roomId, userEmail: userEmail, timeString: lastSeenString, timeToken: timeToken)
-//                    }
-//                }
-//
-//
-//                break
-//            default:
-//                QRLogger.debugPrint( "Realtime socket receive message in unknown topic: \(message.topic)")
-//                break
-//            }
-//        }
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topic: String) {
-        QRLogger.debugPrint("topic: \(topic)")
+        QRLogger.debugPrint("didSubscribeTopic: \(topic)")
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopic topic: String) {
-        QRLogger.debugPrint("topic: \(topic)")
+        QRLogger.debugPrint("didUnsubscribeTopic: \(topic)")
     }
     
     func mqttDidPing(_ mqtt: CocoaMQTT) {

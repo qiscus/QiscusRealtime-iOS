@@ -39,9 +39,8 @@ public protocol QiscusRealtimeDelegate {
     /// You will receive message from qiscus realtime about comment like new comment, user left room, remove member and other
     ///
     /// - Parameters:
-    ///   - roomId: roomId String
-    ///   - message: message
-    func didReceiveMessageComment(roomId: String, message: String)
+    ///   - data: message as string JSON
+    func didReceiveMessage(data: String)
     
     
     /// you will receive Message comment status

@@ -10,15 +10,8 @@ import Foundation
 import SwiftyJSON
 
 public class QiscusRealtime {
-    private let manager : QiscusRealtimeManager = QiscusRealtimeManager.shared
-    public var enableDebugPrint: Bool {
-        set {
-            manager.enableDebugPrint = newValue
-        }
-        get {
-            return manager.enableDebugPrint
-        }
-    }
+    private let manager : QiscusRealtimeManager
+    public static var enableDebugPrint: Bool = false
     public var isConnect : Bool {
         return manager.isConnected
     }
@@ -40,7 +33,7 @@ public class QiscusRealtime {
     ///   - config: need to set config QiscusRealtimeConfig
     ///   - delegate
     public init(withConfig config: QiscusRealtimeConfig) {
-        manager.setup(withConfig: config)
+        manager = QiscusRealtimeManager(withConfig: config)
     }
     
     /// Connect to qiscus realtime server
@@ -53,8 +46,8 @@ public class QiscusRealtime {
         manager.connect(username: username, password: password, delegate: delegate)
     }
     
-    public func subscribe(endpoint: RealtimeSubscribeEndpoint) {
-        manager.subscribe(type: endpoint)
+    public func subscribe(endpoint: RealtimeSubscribeEndpoint) -> Bool {
+        return manager.subscribe(type: endpoint)
     }
     
     /// this func to setup realtime room private

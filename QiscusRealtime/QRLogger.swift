@@ -9,14 +9,14 @@ import Foundation
 
 class QRLogger {
     static func debugPrint(_ text: String) {
-        //if QiscusRealtimeManager.shared.enableDebugPrint {
-            QRLogger.debugPrint("[QiscusRealtime] \(text)")
-        //}
+        if QiscusRealtime.enableDebugPrint {
+            print("[QiscusRealtime] \(text)")
+        }
     }
     
     static func errorPrint(_ text: String) {
-        if QiscusRealtimeManager.shared.enableDebugPrint {
-            QRLogger.debugPrint("[QiscusRealtime] Error: \(text)")
+        if QiscusRealtime.enableDebugPrint {
+            print("[QiscusRealtime] Error: \(text)")
         }
     }
 }
