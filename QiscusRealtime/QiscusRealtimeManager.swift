@@ -9,6 +9,70 @@
 import Foundation
 import SwiftyJSON
 
+protocol QREndpoint {
+    var topic   : String { get }
+    var payload : String { get }
+}
+
+
+public enum RealtimeEndpoint {
+    case comment(token: String)
+    case typing(roomID: String, userEmail: String?)
+}
+
+extension RealtimeEndpoint: QREndpoint {
+    var topic: String {
+        switch self {
+        case .comment(let token):
+            return "\(token)/c"
+        case .typing(let roomID, _):
+            return "r/\(roomID)/\(roomID)/+/t"
+        }
+    }
+    
+    var payload: String {
+        switch self {
+        case .typing(let roomID, let user):
+            return "r/\(roomID)/\(roomID)/\(user ?? "")/t"
+        default:
+            return ""
+        }
+    }
+
+}
+
+class QRRouter<QREndpoint,MqttClient> {
+    func subcribe() {
+        
+    }
+    
+    func publish() {
+        
+    }
+}
+
+struct RealtimeSubscriber {
+    static func topic(endpoint: RealtimeEndpoint) -> String {
+        switch endpoint {
+        case .comment(let token):
+            return "\(token)/c"
+        case .typing(let roomID, _):
+            return "r/\(roomID)/\(roomID)/+/t"
+        }
+    }
+}
+
+struct RealtimePublisher {
+    static func payload(endpoint: RealtimeEndpoint) -> String{
+        switch endpoint {
+        case .typing(let roomID, let user):
+            return "r/\(roomID)/\(roomID)/\(user)/t"
+        default:
+            break
+        }
+    }
+}
+
 // Qiscus wrapper
 class QiscusRealtimeManager {
     var delegate    : QiscusRealtimeDelegate? = nil
@@ -85,39 +149,27 @@ class QiscusRealtimeManager {
         mqttClient.disconnect()
     }
     
-    func setupRoomPrivate(roomId: [String]? = nil){
-        self.roomsPrivateChannel = roomId
+    func publish(type: RealtimeEndpoint) {
+        switch type {
+        case .typing(_, _):
+            let topic = RealtimeSubscriber.topic(endpoint: type)
+            let payload = RealtimePublisher.payload(endpoint: type)
+            mqttClient.publish(topic, message: payload)
+        default:
+            break
+        }
     }
     
-    func setupRoomPublic(roomUniqueId: [String]? = nil){
-        self.roomsPublicChannel  = roomUniqueId
+    func subscribe(type: RealtimeEndpoint) {
+        let topic = RealtimeSubscriber.topic(endpoint: type)
+        mqttClient.subscribe(topic)
     }
     
-    func setupParticipantSubcribe(participantEmail: [String]? = nil){
-        self.participantEmail  = participantEmail
+    func unsubscribe(type: RealtimeEndpoint) {
+        let topic = RealtimeSubscriber.topic(endpoint: type)
+        mqttClient.subscribe(topic)
     }
-    
-    func unsubscribeRoomChannel(){
-//        if self.participantEmail?.count != 0 && self.participantEmail != nil{
-//            for email in self.participantEmail! {
-//                self.mqtt?.unsubscribe("u/\(email)/s")
-//            }
-//        }
-//
-//        if self.roomsPrivateChannel?.count != 0 && self.roomsPrivateChannel != nil{
-//            for roomId in self.roomsPrivateChannel! {
-//                self.mqtt?.unsubscribe("r/\(roomId)/\(roomId)/+/d")
-//                self.mqtt?.unsubscribe("r/\(roomId)/\(roomId)/+/r")
-//            }
-//        }
-    }
-    
-    func unsubscribeRoomId(roomId : String){
-//        self.mqtt?.unsubscribe("r/\(roomId)/\(roomId)/+/d")
-//        self.mqtt?.unsubscribe("r/\(roomId)/\(roomId)/+/r")
-    }
-    
-    
+
     func connect(username: String, password: String, delegate: QiscusRealtimeDelegate? = nil){
         self.delegate = delegate
         let connecting = mqttClient.connect(username: username, password: password)
@@ -125,34 +177,6 @@ class QiscusRealtimeManager {
             self.user   = QiscusRealtimeUser(email: username, token: password, deviceID: "")
         }
     }
-    
-    func startPublishOnlineStatus(){
-//        if Thread.isMainThread{
-//            self.userStatusTimer?.invalidate()
-//            self.userStatusTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.publishOnlineStatus), userInfo: nil, repeats: true)
-//        }else{
-//            DispatchQueue.main.sync {
-//                self.userStatusTimer?.invalidate()
-//                self.userStatusTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.publishOnlineStatus), userInfo: nil, repeats: true)
-//            }
-//        }
-    }
-    
-    @objc func publishOnlineStatus(){
-//        let channel = "u/\(config.QiscusClientEmail)/s"
-//        let state = UIApplication.shared.applicationState
-//        let activeState = (state == .active)
-//        if activeState {
-//            self.mqtt?.publish(channel, withString: "1", qos: .qos1, retained: true)
-//        }
-    }
-    
-    func stopPublishOnlineStatus(){
-//        let channel = "u/\(config.QiscusClientEmail)/s"
-//        self.userStatusTimer?.invalidate()
-//        self.mqtt?.publish(channel, withString: "0", qos: .qos1, retained: true)
-    }
-    
 }
 
 

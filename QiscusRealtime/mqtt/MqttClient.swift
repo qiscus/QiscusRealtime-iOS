@@ -26,8 +26,6 @@ class MqttClient {
         }
     }
     
-    
-    
     init(clientID: String, host: String, port: UInt16) {
         client = CocoaMQTT.init(clientID: clientID, host: host, port: port)
     }
@@ -38,27 +36,19 @@ class MqttClient {
 //        client.willMessage = CocoaMQTTWill(topic: "/will", message: "dieout")
         client.keepAlive = 60
         client.delegate = self
-        return client.connect() // true = connecting
+        return client.connect()
     }
     
-    func publish(_ topic: String, withString string: String, qos: CocoaMQTTQOS, retained: Bool, dup: Bool) {
-        
+    func publish(_ topic: String, message: String) {
+        client.publish(topic, withString: message)
     }
     
-    func publish(_ message: CocoaMQTTMessage) {
-        
-    }
-    
-    func subscribe(_ topic: String, qos: CocoaMQTTQOS) {
-        
+    func subscribe(_ topic: String) {
+        client.subscribe(topic, qos: .qos0)
     }
     
     func unsubscribe(_ topic: String) {
-        
-    }
-    
-    func ping() {
-        
+        client.unsubscribe(topic)
     }
     
     func disconnect(){

@@ -45,6 +45,10 @@ public class QiscusRealtime {
         manager.connect(username: username, password: password, delegate: delegate)
     }
     
+    public func subscribe(endpoint: RealtimeEndpoint) {
+        manager.subscribe(type: endpoint)
+    }
+    
     /// this func to setup realtime room private
     ///
     /// - Parameter roomId: array of roomId [String]
