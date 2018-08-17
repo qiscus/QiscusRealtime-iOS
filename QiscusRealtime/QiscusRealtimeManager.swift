@@ -29,8 +29,8 @@ public enum RealtimeSubscribeEndpoint {
 public enum RealtimePublishEndpoint {
     // publish online status
     case onlineStatus(value: Bool)
-    // publish typing in room
-    case isTyping(value: Bool, roomID: String, userEmail: String)
+    // publish typing in room, typing by autenticate user
+    case isTyping(value: Bool, roomID: String)
 }
 
 struct RealtimeSubscriber {
@@ -50,16 +50,16 @@ struct RealtimeSubscriber {
     }
 }
 
-//struct RealtimePublisher {
-//    static func payload(endpoint: RealtimeEndpoint) -> String{
-//        switch endpoint {
-//        case .typing(let roomID, let user):
-//            return "r/\(roomID)/\(roomID)/\(user)/t"
-//        default:
-//            break
-//        }
-//    }
-//}
+struct RealtimePublisher {
+    static func topic(endpoint: RealtimePublishEndpoint, user: String) -> String {
+        switch endpoint {
+        case .onlineStatus(_):
+            return "u/\(user)/s"
+        case .isTyping(_ , let roomID):
+            return "r/\(roomID)/\(roomID)/\(user)/t"
+        }
+    }
+}
 
 // Qiscus wrapper
 class QiscusRealtimeManager {
@@ -72,62 +72,7 @@ class QiscusRealtimeManager {
             return mqttClient.isConnect
         }
     }
-    
-    var userStatusTimer: Timer?
-    var realtimeConnect: Bool = false
-    var roomsPrivateChannel : [String]? = nil
-    var roomsPublicChannel : [String]? = nil
-    var participantEmail : [String]? = nil
-    var lastSeen : Double = 0
-    public var lastSeenString:String{
-        get{
-            if lastSeen == 0 {
-                return ""
-            }else{
-                var result = ""
-                let date = Date(timeIntervalSince1970: self.lastSeen)
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "d MMMM yyyy"
-                let dateString = dateFormatter.string(from: date)
-                
-                let timeFormatter = DateFormatter()
-                timeFormatter.dateFormat = "h:mm a"
-                let timeString = timeFormatter.string(from: date)
-                
-                let now = Date()
-                
-                let secondDiff = now.offsetFromInSecond(date: date)
-                let minuteDiff = Int(secondDiff/60)
-                let hourDiff = Int(minuteDiff/60)
-                
-                if secondDiff < 60 {
-                    result = "FEW_SECOND_AGO"
-                }
-                else if minuteDiff == 1 {
-                    result = "A_MINUTE_AGO"
-                }
-                else if minuteDiff < 60 {
-                    result = "\(Int(secondDiff/60)) MINUTES_AGO"
-                }else if hourDiff == 1{
-                    result = "AN_HOUR_AGO"
-                }else if hourDiff < 6 {
-                    result = "\(hourDiff) HOURS_AGO"
-                }
-                else if date.isToday{
-                    result = "\(timeString) HOURS_AGO"
-                }
-                else if date.isYesterday{
-                    result = "\(timeString) YESTERDAY_AT"
-                }
-                else{
-                    result = "\(dateString) " + "AT" + " \(timeString)"
-                }
-                
-                return result
-            }
-        }
-    }
-    
+
     init(withConfig c: QiscusRealtimeConfig) {
         config          = c
         mqttClient     = MqttClient(clientID: c.clientID, host: c.hostRealtimeServer, port: c.port)
@@ -137,15 +82,18 @@ class QiscusRealtimeManager {
         mqttClient.disconnect()
     }
     
-    func publish() {
-//        switch type {
-//        case .typing(_, _):
-//            let topic = RealtimeSubscriber.topic(endpoint: type)
-//            let payload = RealtimePublisher.payload(endpoint: type)
-//            mqttClient.publish(topic, message: payload)
-//        default:
-//            break
-//        }
+    func publish(type: RealtimePublishEndpoint) -> Bool {
+        if let u = self.user {
+            let topic = RealtimePublisher.topic(endpoint: type, user: u.email)
+            switch type {
+            case .onlineStatus(let value):
+                return mqttClient.publish(topic, message: "\(String(value)):")
+            case .isTyping(let value, _):
+                return mqttClient.publish(topic, message: String(value))
+            }
+        }else {
+            return false
+        }
     }
     
     func subscribe(type: RealtimeSubscribeEndpoint) -> Bool {

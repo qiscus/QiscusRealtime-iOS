@@ -44,8 +44,14 @@ class MqttClient {
         return client.connect()
     }
     
-    func publish(_ topic: String, message: String) {
-        client.publish(topic, withString: message)
+    func publish(_ topic: String, message: String) -> Bool {
+        if self.connectionState == .connected {
+            client.publish(topic, withString: message)
+            return true
+        }else {
+            QRLogger.debugPrint("can't publish \(topic)")
+            return false
+        }
     }
     
     func subscribe(_ topic: String) -> Bool {
@@ -86,31 +92,12 @@ class MqttClient {
         }
     }
     
-//    private func getRoomID(data: String, type: QREventType) -> String {
-//        var id = ""
-//        switch type {
-//        case .comment:
-//            id = getRoomID(fromComment: data)
-//        case .delivery:
-//
-//        default:
-//            return id
-//        }
-//        return id
-//    }
-    
     private func getRoomID(fromTopic: String) -> String {
         var id = ""
         
         return id
     }
-    
-    private func getRoomID(fromComment: String) -> String {
-        var id = ""
-        
-        return id
-    }
-    
+
 }
 
 extension MqttClient: CocoaMQTTDelegate {

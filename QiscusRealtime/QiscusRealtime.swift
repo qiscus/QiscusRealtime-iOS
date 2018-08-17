@@ -50,34 +50,9 @@ public class QiscusRealtime {
         return manager.subscribe(type: endpoint)
     }
     
-    /// this func to setup realtime room private
-    ///
-    /// - Parameter roomId: array of roomId [String]
-    public func setupRealtimeRoomPrivate(roomId: [String]? = nil){
-//        return qiscusRealtimeManager.setupRoomPrivate(roomId: roomId)
+    public func publish(endpoint: RealtimePublishEndpoint) -> Bool {
+        return manager.publish(type:endpoint)
     }
-    
-    
-    /// this func to setup realtime room public
-    ///
-    /// - Parameter roomUniqueId: array of roomUniqueId [String]
-    public func setupRealtimeRoomPublic(roomUniqueId:  [String]? = nil){
-//        return qiscusRealtimeManager.setupRoomPublic(roomUniqueId: roomUniqueId)
-    }
-    
-    /// this func to setup participant subcribe
-    ///
-    /// - Parameter roomUniqueId: array of participantEmail [String]
-    public func setupParticipantSubcribe(participantEmail:  [String]? = nil){
-//        return qiscusRealtimeManager.setupParticipantSubcribe(participantEmail: participantEmail)
-    }
-    
-    
-    /// this func to unsubcribeRoomChannel
-//    public func unsubscribeRoomChannel(){
-////        return qiscusRealtimeManager.unsubscribeRoomChannel()
-//    }
-    
     
     /// this func to disconnect qiscus realtime
     public func disconnect(){
