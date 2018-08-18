@@ -87,7 +87,7 @@ class QiscusRealtimeManager {
             let topic = RealtimePublisher.topic(endpoint: type, user: u.email)
             switch type {
             case .onlineStatus(let value):
-                return mqttClient.publish(topic, message: "\(String(value)):")
+                return mqttClient.publish(topic, message: "\(String(value)):\(timenowUTC())")
             case .isTyping(let value, _):
                 return mqttClient.publish(topic, message: String(value))
             }
@@ -120,6 +120,3 @@ class QiscusRealtimeManager {
         return String(timeInms)
     }
 }
-
-
-
