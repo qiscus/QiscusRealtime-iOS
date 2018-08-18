@@ -85,17 +85,34 @@ class MqttClient {
                 return QREventType.undefined
             }
         }else if word.count == 5 {
-            // probably deliverd or read
-            return QREventType.delivery
+            // probably deliverd or read or typing
+            if word.last == "t" {
+                return QREventType.typing
+            }else if word.last == "r" {
+                return QREventType.read
+            }else if word.last == "d" {
+                return QREventType.delivery
+            }else{
+                return QREventType.undefined
+            }
         }else {
             return QREventType.undefined
         }
     }
     
-    private func getRoomID(fromTopic: String) -> String {
-        var id = ""
-        
-        return id
+    /// Get room id from topic typing
+    private func getRoomID(fromTopic topic: String) -> String {
+        let r = topic.replacingOccurrences(of: "r/", with: "")
+        let t = r.replacingOccurrences(of: "/t", with: "")
+        let id = t.components(separatedBy: "/")
+        return id.first ?? ""
+    }
+    /// Get email from topic typing
+    private func getUser(fromTopic topic: String) -> String {
+        let r = topic.replacingOccurrences(of: "r/", with: "")
+        let t = r.replacingOccurrences(of: "/t", with: "")
+        let email = t.components(separatedBy: "/")
+        return email.last ?? ""
     }
 
 }
@@ -116,7 +133,9 @@ extension MqttClient: CocoaMQTTDelegate {
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
-    
+        if let messageData = message.string {
+            QRLogger.debugPrint("didPublishMessage \n===== topic: \(message.topic) \n===== data: \(messageData)")
+        }
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didPublishAck id: UInt16) {
@@ -124,7 +143,6 @@ extension MqttClient: CocoaMQTTDelegate {
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16 ) {
-
         if let messageData = message.string {
             QRLogger.debugPrint("didReceiveMessage \n===== topic: \(message.topic) \n===== data: \(messageData)")
             let type = getEventType(topic: message.topic)
@@ -134,18 +152,19 @@ extension MqttClient: CocoaMQTTDelegate {
                 self.delegate?.didReceiveMessage(data: messageData)
             case .typing:
                 let id = getRoomID(fromTopic: message.topic)
-                self.delegate?.updateUserTyping(roomId: id, userEmail: "")
+                let user = getUser(fromTopic: message.topic)
+                self.delegate?.updateUser(typing: Bool(messageData) ?? false, roomId: id, userEmail: user)
                 break
             case .online:
                 break
             case .read:
                 break
             case .delivery:
+//                self.delegate?.didReceiveMessageStatus(roomId: <#T##String#>, commentId: <#T##Int#>, Status: .delivered)
                 break
             case .undefined:
                 break
             }
-            
         }
     }
     

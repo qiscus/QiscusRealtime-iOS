@@ -56,6 +56,6 @@ public protocol QiscusRealtimeDelegate {
     /// - Parameters:
     ///   - roomId: roomId (String)
     ///   - userEmail: userEmail (String)
-    func updateUserTyping(roomId: String, userEmail: String)
+    func updateUser(typing: Bool, roomId: String, userEmail: String)
     
 }

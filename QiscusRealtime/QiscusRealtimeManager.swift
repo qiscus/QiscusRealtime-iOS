@@ -114,6 +114,11 @@ class QiscusRealtimeManager {
             self.user   = QiscusRealtimeUser(email: username, token: password, deviceID: "")
         }
     }
+    
+    private func timenowUTC() -> String {
+        let timeInms = NSDate().timeIntervalSince1970 * 1000.0 // is UTC
+        return String(timeInms)
+    }
 }
 
 
