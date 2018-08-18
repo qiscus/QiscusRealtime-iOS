@@ -84,6 +84,12 @@ class MqttClient {
             }else {
                 return QREventType.undefined
             }
+        }else if word.count == 3 {
+            if word.first == "u" && word.last == "s" {
+                return QREventType.online
+            }else {
+                return QREventType.undefined
+            }
         }else if word.count == 5 {
             // probably deliverd or read or typing
             if word.last == "t" {
@@ -109,17 +115,17 @@ class MqttClient {
     }
     /// Get email from topic typing
     private func getUser(fromTopic topic: String) -> String {
-        let r = topic.replacingOccurrences(of: "r/", with: "")
-        let t = r.replacingOccurrences(of: "/t", with: "")
-        let email = t.components(separatedBy: "/")
-        return email.last ?? ""
+        // r/959996/959996/hijuju/t
+        var t = topic.components(separatedBy: "/")
+        t.removeLast() // remove "t"
+        return t.last ?? ""
     }
     
     private func getUserOnline(fromTopic topic: String) -> String {
-        let r = topic.replacingOccurrences(of: "u/", with: "")
-        let t = r.replacingOccurrences(of: "/s", with: "")
-        let email = t.components(separatedBy: "/")
-        return email.first ?? ""
+        // u/hijuju/s
+        var t = topic.components(separatedBy: "/")
+        t.removeFirst() // remove "u"
+        return t.first ?? ""
     }
     
     /// get comment id and unique id from event message status deliverd or read
@@ -141,7 +147,9 @@ class MqttClient {
         // example payload :
         // **{1|0}:timestamp**
         let ids = payload.components(separatedBy: ":")
-        return(Bool(ids.first ?? "0") ?? false, ids.last ?? "")
+        let value = Int(ids.first ?? "0") ?? 0 // convert string to int default 0
+        let isOnline = value != 0 // convert int to bool, default false
+        return(isOnline, ids.last ?? "")
     }
 }
 
@@ -181,7 +189,9 @@ extension MqttClient: CocoaMQTTDelegate {
             case .typing:
                 let id = getRoomID(fromTopic: message.topic)
                 let user = getUser(fromTopic: message.topic)
-                self.delegate?.didReceiveUser(typing: Bool(messageData) ?? false, roomId: id, userEmail: user)
+                let value = Int(messageData) ?? 0 // convert string to int default 0
+                let istyping = value != 0 // convert int to bool, default false
+                self.delegate?.didReceiveUser(typing: istyping, roomId: id, userEmail: user)
                 break
             case .online:
                 let user = getUserOnline(fromTopic: message.topic)
