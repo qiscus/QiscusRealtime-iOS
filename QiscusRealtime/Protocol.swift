@@ -16,25 +16,25 @@ public enum QiscusRealtimeConnectionState : String{
 }
 
 public protocol QiscusRealtimeDelegate {
-    func disconnect(withError err: Error?)
-    func connected()
+    /// Qiscus Realtime Server connection state
+    ///
+    /// - Parameter state: can be connection, connected, or disconnect
     func connectionState(change state: QiscusRealtimeConnectionState)
     
     /// You will receive from qiscus realtime about user status
     ///
     /// - Parameters:
-    ///   - roomId: roomId
-    ///   - userEmail: userEmail
-    ///   - timeString: timeString
-    ///   - timeToken: timeToken
-    func didReceiveUserStatus(roomId: String, userEmail: String, timeString: String, timeToken: Double)
+    ///   - userEmail: qiscus email
+    ///   - timestamp: timestampt in UTC
+    func didReceiveUser(userEmail: String, isOnline: Bool, timestamp: String)
     
+    // MARK: TODO minor feature, waiting core can delete, parsing payload to complicated
     /// You will receive message from qiscus realtime about event like message delete, after you got this message
     ///
     /// - Parameters:
     ///   - roomId: roomId String
     ///   - message: message
-    func didReceiveMessageEvent(roomId: String, message: String)
+    //func didReceiveMessageEvent(roomId: String, message: String)
     
     /// You will receive message from qiscus realtime about comment like new comment, user left room, remove member and other
     ///
@@ -42,20 +42,17 @@ public protocol QiscusRealtimeDelegate {
     ///   - data: message as string JSON
     func didReceiveMessage(data: String)
     
-    
     /// you will receive Message comment status
     /// - Parameters:
     ///   - roomId: roomId
     ///   - commentId: commentId
     ///   - Status: status read or deliver
-    func didReceiveMessageStatus(roomId: String, commentId: Int, Status: MessageStatus)
-    
+    func didReceiveMessageStatus(roomId: String, commentId: String, commentUniqueId: String, Status: MessageStatus)
     
     /// You will receive message from qiscus realtime about user typing
     ///
     /// - Parameters:
     ///   - roomId: roomId (String)
     ///   - userEmail: userEmail (String)
-    func updateUser(typing: Bool, roomId: String, userEmail: String)
-    
+    func didReceiveUser(typing: Bool, roomId: String, userEmail: String)
 }

@@ -36,7 +36,7 @@ public class QiscusRealtime {
         manager = QiscusRealtimeManager(withConfig: config)
     }
     
-    /// Connect to qiscus realtime server
+    /// Connect to qiscus realtime server, you can listen protocol when connect to realtime server
     ///
     /// - Parameters:
     ///   - username: qiscus user email
@@ -56,6 +56,6 @@ public class QiscusRealtime {
     
     /// this func to disconnect qiscus realtime
     public func disconnect(){
-//        return qiscusRealtimeManager.mqttDisconnect()
+        return manager.disconnect()
     }
 }
