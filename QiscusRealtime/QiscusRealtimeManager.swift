@@ -87,9 +87,9 @@ class QiscusRealtimeManager {
             let topic = RealtimePublisher.topic(endpoint: type, user: u.email)
             switch type {
             case .onlineStatus(let value):
-                return mqttClient.publish(topic, message: "\(String(value)):\(timenowUTC())")
+                return mqttClient.publish(topic, message: "\(value ? 1 : 0)")
             case .isTyping(let value, _):
-                return mqttClient.publish(topic, message: String(value))
+                return mqttClient.publish(topic, message: "\(value ? 1 : 0)")
             }
         }else {
             return false
@@ -116,7 +116,7 @@ class QiscusRealtimeManager {
     }
     
     private func timenowUTC() -> String {
-        let timeInms = NSDate().timeIntervalSince1970 * 1000.0 // is UTC
+        let timeInms = NSDate().timeIntervalSince1970 // is UTC
         return String(timeInms)
     }
 }

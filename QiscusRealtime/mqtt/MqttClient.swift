@@ -38,7 +38,7 @@ class MqttClient {
     func connect(username: String, password: String) -> Bool {
         client.username = username
         client.password = password
-        //        client.willMessage = CocoaMQTTWill(topic: "/will", message: "dieout")
+        client.willMessage = CocoaMQTTWill(topic: "u/\(username)/s", message: "0")
         client.keepAlive = 60
         client.delegate = self
         return client.connect()
