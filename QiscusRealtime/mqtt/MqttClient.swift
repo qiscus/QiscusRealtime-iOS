@@ -189,6 +189,7 @@ extension MqttClient: CocoaMQTTDelegate {
             case .typing:
                 let id = getRoomID(fromTopic: message.topic)
                 let user = getUser(fromTopic: message.topic)
+                if user == client.username { break }
                 let value = Int(messageData) ?? 0 // convert string to int default 0
                 let istyping = value != 0 // convert int to bool, default false
                 self.delegate?.didReceiveUser(typing: istyping, roomId: id, userEmail: user)
