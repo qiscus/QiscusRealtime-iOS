@@ -7,13 +7,6 @@
 //
 
 import Foundation
-import SwiftyJSON
-
-//protocol QREndpoint {
-//    var topic   : String { get }
-//    var payload : String { get }
-//}
-
 
 public enum RealtimeSubscribeEndpoint {
     case comment(token: String)
