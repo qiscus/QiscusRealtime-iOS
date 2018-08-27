@@ -11,7 +11,7 @@ s.license      = "MIT"
 s.author       = "Qiscus"
 s.source       = { :git => "https://github.com/qiscus/qiscus-sdk-ios.git", :tag => "#{s.version}" }
 s.source_files  = "QiscusRealtime/**/*.{swift}"
-s.platform      = :ios, "9.0"
+s.platform      = :ios, "9.3"
 
 s.dependency 'CocoaMQTT', '1.1.2'
 
