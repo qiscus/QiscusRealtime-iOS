@@ -1,4 +1,8 @@
 QiscusRealtime.framework
+QiscusRealtime/build/*
+QiscusRealtime/Pods/*
+QiscusRealtime/Podfile.lock
+QiscusRealtime/Podfile.lockbup
 fastlane/*
 build/*
 Pods/*
