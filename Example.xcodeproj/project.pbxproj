@@ -7,15 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04457C0A21186276007CAABF /* chatRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04457C0821186276007CAABF /* chatRoomVC.swift */; };
-		04457C0B21186276007CAABF /* chatRoomVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04457C0921186276007CAABF /* chatRoomVC.xib */; };
-		04457C0E2119593F007CAABF /* ListChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04457C0C2119593E007CAABF /* ListChatCell.swift */; };
-		04457C0F2119593F007CAABF /* ListChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04457C0D2119593E007CAABF /* ListChatCell.xib */; };
-		04A4166A21144DC700D1FF33 /* ClientMqtt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A4166921144DC700D1FF33 /* ClientMqtt.swift */; };
-		04A4166C2114538000D1FF33 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A4166B2114538000D1FF33 /* MainApp.swift */; };
-		04A416732118467E00D1FF33 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A416722118467E00D1FF33 /* UITableViewCell.swift */; };
-		04A41676211846AF00D1FF33 /* exampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A41674211846AF00D1FF33 /* exampleCell.swift */; };
-		04A41677211846AF00D1FF33 /* exampleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A41675211846AF00D1FF33 /* exampleCell.xib */; };
 		04C3455F2113FFB8004B0592 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C3455E2113FFB8004B0592 /* AppDelegate.swift */; };
 		04C345612113FFB8004B0592 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C345602113FFB8004B0592 /* ViewController.swift */; };
 		04C345642113FFB8004B0592 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C345622113FFB8004B0592 /* Main.storyboard */; };
@@ -51,15 +42,6 @@
 
 /* Begin PBXFileReference section */
 		011407CAE6F91677233AB6F6 /* Pods-mqttLibTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mqttLibTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mqttLibTests/Pods-mqttLibTests.release.xcconfig"; sourceTree = "<group>"; };
-		04457C0821186276007CAABF /* chatRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatRoomVC.swift; sourceTree = "<group>"; };
-		04457C0921186276007CAABF /* chatRoomVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = chatRoomVC.xib; sourceTree = "<group>"; };
-		04457C0C2119593E007CAABF /* ListChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListChatCell.swift; sourceTree = "<group>"; };
-		04457C0D2119593E007CAABF /* ListChatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListChatCell.xib; sourceTree = "<group>"; };
-		04A4166921144DC700D1FF33 /* ClientMqtt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientMqtt.swift; sourceTree = "<group>"; };
-		04A4166B2114538000D1FF33 /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
-		04A416722118467E00D1FF33 /* UITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
-		04A41674211846AF00D1FF33 /* exampleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exampleCell.swift; sourceTree = "<group>"; };
-		04A41675211846AF00D1FF33 /* exampleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = exampleCell.xib; sourceTree = "<group>"; };
 		04C3455C2113FFB8004B0592 /* example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C3455E2113FFB8004B0592 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04C345602113FFB8004B0592 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -126,21 +108,12 @@
 		04C3455D2113FFB8004B0592 /* example */ = {
 			isa = PBXGroup;
 			children = (
-				04A416722118467E00D1FF33 /* UITableViewCell.swift */,
 				04C3455E2113FFB8004B0592 /* AppDelegate.swift */,
 				04C345602113FFB8004B0592 /* ViewController.swift */,
 				04C345622113FFB8004B0592 /* Main.storyboard */,
 				04C345652113FFB9004B0592 /* Assets.xcassets */,
 				04C345672113FFB9004B0592 /* LaunchScreen.storyboard */,
 				04C3456A2113FFB9004B0592 /* Info.plist */,
-				04A4166921144DC700D1FF33 /* ClientMqtt.swift */,
-				04A4166B2114538000D1FF33 /* MainApp.swift */,
-				04A41674211846AF00D1FF33 /* exampleCell.swift */,
-				04A41675211846AF00D1FF33 /* exampleCell.xib */,
-				04457C0821186276007CAABF /* chatRoomVC.swift */,
-				04457C0921186276007CAABF /* chatRoomVC.xib */,
-				04457C0C2119593E007CAABF /* ListChatCell.swift */,
-				04457C0D2119593E007CAABF /* ListChatCell.xib */,
 			);
 			path = example;
 			sourceTree = "<group>";
@@ -273,11 +246,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04A41677211846AF00D1FF33 /* exampleCell.xib in Resources */,
 				04C345692113FFB9004B0592 /* LaunchScreen.storyboard in Resources */,
 				04C345662113FFB9004B0592 /* Assets.xcassets in Resources */,
-				04457C0F2119593F007CAABF /* ListChatCell.xib in Resources */,
-				04457C0B21186276007CAABF /* chatRoomVC.xib in Resources */,
 				04C345642113FFB8004B0592 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,14 +374,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04A416732118467E00D1FF33 /* UITableViewCell.swift in Sources */,
-				04457C0E2119593F007CAABF /* ListChatCell.swift in Sources */,
 				04C345612113FFB8004B0592 /* ViewController.swift in Sources */,
 				04C3455F2113FFB8004B0592 /* AppDelegate.swift in Sources */,
-				04A4166C2114538000D1FF33 /* MainApp.swift in Sources */,
-				04A41676211846AF00D1FF33 /* exampleCell.swift in Sources */,
-				04A4166A21144DC700D1FF33 /* ClientMqtt.swift in Sources */,
-				04457C0A21186276007CAABF /* chatRoomVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,7 +547,10 @@
 				DEVELOPMENT_TEAM = QG8KA4P8TE;
 				INFOPLIST_FILE = example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscus.kiwari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9e92cab5-2e5b-45f4-b1ca-8a84dd66f0dc";
@@ -603,7 +570,10 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscus.kiwari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -621,7 +591,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QG8KA4P8TE;
 				INFOPLIST_FILE = exampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscusdev..exampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -639,7 +613,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QG8KA4P8TE;
 				INFOPLIST_FILE = exampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscusdev..exampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
