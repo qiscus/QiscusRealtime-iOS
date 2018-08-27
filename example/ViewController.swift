@@ -7,14 +7,14 @@
 //
 
 import UIKit
-import QiscusRealtime
-
 
 class ViewController: UIViewController {
+    var manager : RealtimeManager = RealtimeManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        manager.setup(appName: "Qiscus Chat")
+        manager.connect(username: "amsibsan", password: "token")
     }
     
     override func didReceiveMemoryWarning() {

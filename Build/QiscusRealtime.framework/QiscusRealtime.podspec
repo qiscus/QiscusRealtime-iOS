@@ -9,10 +9,10 @@ DESC
 s.homepage     = "https://qisc.us"
 s.license      = "MIT"
 s.author       = "Qiscus"
-s.source       = { :git => "https://github.com/qiscus/QiscusRealtime-iOS", :tag => "#{s.version}" }
-s.ios.vendored_frameworks	= 'QiscusRealtime.framework'
-s.ios.frameworks 			= ['CFNetwork', 'Security', 'Foundation', 'MobileCoreServices']
+s.source       = { :git => "https://github.com/qiscus/qiscus-sdk-ios.git", :tag => "#{s.version}" }
+s.source_files  = "QiscusRealtime/**/*.{swift}"
 s.platform      = :ios, "9.0"
+
 s.dependency 'CocoaMQTT', '1.1.2'
 
 end
