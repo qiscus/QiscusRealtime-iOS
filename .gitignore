@@ -1,4 +1,6 @@
+QiscusRealtime.framework
 fastlane/*
+build/*
 Pods/*
 Podfile.lock
 Podfile.lockbup

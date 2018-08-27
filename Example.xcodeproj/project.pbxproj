@@ -24,6 +24,7 @@
 		3DCEBB432133A2FD006532EF /* MqttClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCEBB392133A2FD006532EF /* MqttClient.swift */; };
 		3DCEBB442133A2FD006532EF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DCEBB3A2133A2FD006532EF /* Info.plist */; };
 		3DCEBB462133A37F006532EF /* QiscusRealtime.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3DCEBB452133A37F006532EF /* QiscusRealtime.podspec */; };
+		3DCEBB4A2133AE1E006532EF /* QiscusRealtime.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3DCEBB492133AE1E006532EF /* QiscusRealtime.podspec */; };
 		513A79238B521E26BB7CFE1F /* Pods_example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3F51D2C0175A916B474203 /* Pods_example.framework */; };
 		5FDD4FD146BC1FC506E477E6 /* Pods_exampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93DA9B4F7D93FE9F665F0D96 /* Pods_exampleTests.framework */; };
 		AA497620FCE279DB0664AB13 /* Pods_QiscusRealtime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099B579F62C19203D7163516 /* Pods_QiscusRealtime.framework */; };
@@ -65,6 +66,7 @@
 		3DCEBB392133A2FD006532EF /* MqttClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MqttClient.swift; sourceTree = "<group>"; };
 		3DCEBB3A2133A2FD006532EF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DCEBB452133A37F006532EF /* QiscusRealtime.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QiscusRealtime.podspec; sourceTree = "<group>"; };
+		3DCEBB492133AE1E006532EF /* QiscusRealtime.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = QiscusRealtime.podspec; path = Cocoapods/QiscusRealtime.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4BC5CD4C1FB02E787BCD57DB /* Pods-mqttLib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mqttLib.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mqttLib/Pods-mqttLib.debug.xcconfig"; sourceTree = "<group>"; };
 		4E64400563CDC4CD223522F2 /* Pods-exampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-exampleTests/Pods-exampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		5E527A300670CB8B6D6F4822 /* Pods_mqttLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mqttLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				3DCEBB452133A37F006532EF /* QiscusRealtime.podspec */,
+				3DCEBB492133AE1E006532EF /* QiscusRealtime.podspec */,
 				3DCEBB2E2133A2FD006532EF /* QiscusRealtime */,
 				04C3455D2113FFB8004B0592 /* example */,
 				04C345722113FFB9004B0592 /* exampleTests */,
@@ -279,8 +282,6 @@
 				3DCEBB1F2133A2A7006532EF /* Headers */,
 				3DCEBB202133A2A7006532EF /* Resources */,
 				6624EF1C82B30901B31ECDAB /* [CP] Copy Pods Resources */,
-				3DCEBB472133A714006532EF /* ShellScript */,
-				3DCEBB482133A728006532EF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -344,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04C345692113FFB9004B0592 /* LaunchScreen.storyboard in Resources */,
+				3DCEBB4A2133AE1E006532EF /* QiscusRealtime.podspec in Resources */,
 				04C345662113FFB9004B0592 /* Assets.xcassets in Resources */,
 				04C345642113FFB8004B0592 /* Main.storyboard in Resources */,
 			);
@@ -415,32 +417,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-exampleTests/Pods-exampleTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		3DCEBB472133A714006532EF /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"QiscusRealtime\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"QiscusRealtime\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/QiscusRealtime.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/QiscusRealtime.framework/Modules/QiscusRealtime.swiftmodule/.\"\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/QiscusRealtime.framework/Modules/QiscusRealtime.swiftmodule\"\nfi\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/QiscusRealtime.framework/QiscusRealtime\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/QiscusRealtime.framework/QiscusRealtime\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/QiscusRealtime.framework/QiscusRealtime\"\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/QiscusRealtime.framework\" \"QiscusRealtime\"\n\n# Step 6. Convenience step to open the project's directory in Finder\nopen \"QiscusRealtime\"";
-		};
-		3DCEBB482133A728006532EF /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/QiscusRealtime.framework/ios-framework-build.sh\" QiscusRealtime";
 		};
 		3DFAE8B0327AEDA45895911E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -517,12 +493,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-example/Pods-example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaMQTT/CocoaMQTT.framework",
+				"${BUILT_PRODUCTS_DIR}/QiscusRealtime/QiscusRealtime.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyTimer/SwiftyTimer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaMQTT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QiscusRealtime.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyTimer.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -724,7 +702,10 @@
 				DEVELOPMENT_TEAM = QG8KA4P8TE;
 				INFOPLIST_FILE = example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscus.kiwari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9e92cab5-2e5b-45f4-b1ca-8a84dd66f0dc";
@@ -743,7 +724,10 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscus.kiwari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -761,7 +745,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QG8KA4P8TE;
 				INFOPLIST_FILE = exampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscusdev..exampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -779,7 +767,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QG8KA4P8TE;
 				INFOPLIST_FILE = exampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscusdev..exampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -802,7 +794,11 @@
 				INFOPLIST_FILE = QiscusRealtime/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscusdev.QiscusRealtime;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = NO;
@@ -825,7 +821,11 @@
 				INFOPLIST_FILE = QiscusRealtime/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscusdev.QiscusRealtime;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = NO;

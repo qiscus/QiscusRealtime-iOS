@@ -6,8 +6,8 @@ target 'example' do
   use_frameworks!
 
   # Pods for example
-  pod 'QiscusRealtime', :path => 'Cocoapods/'
-#  pod 'QiscusRealtime', :path => '.'
+#  pod 'QiscusRealtime', :path => 'Cocoapods/'
+  pod 'QiscusRealtime', :path => '.'
   target 'exampleTests' do
     inherit! :search_paths
     # Pods for testing
