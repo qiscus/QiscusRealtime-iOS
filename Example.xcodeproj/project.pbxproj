@@ -193,6 +193,7 @@
 				04C3455A2113FFB8004B0592 /* Resources */,
 				E9477A40E1A8FD6AB994449E /* [CP] Embed Pods Frameworks */,
 				04457C032118501D007CAABF /* Embed Frameworks */,
+				0347935D2002D095C54609CD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -211,6 +212,8 @@
 				04C3456B2113FFB9004B0592 /* Sources */,
 				04C3456C2113FFB9004B0592 /* Frameworks */,
 				04C3456D2113FFB9004B0592 /* Resources */,
+				3DFAE8B0327AEDA45895911E /* [CP] Embed Pods Frameworks */,
+				307E6C9FBA7091A67710E7D3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -289,6 +292,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0347935D2002D095C54609CD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-example/Pods-example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		307E6C9FBA7091A67710E7D3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-exampleTests/Pods-exampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3DFAE8B0327AEDA45895911E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-exampleTests/Pods-exampleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		915755629BAC5468220F050E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -335,7 +383,6 @@
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaMQTT/CocoaMQTT.framework",
 				"${BUILT_PRODUCTS_DIR}/QiscusRealtime/QiscusRealtime.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyTimer/SwiftyTimer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -343,7 +390,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaMQTT.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QiscusRealtime.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyTimer.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,10 +583,7 @@
 				DEVELOPMENT_TEAM = QG8KA4P8TE;
 				INFOPLIST_FILE = example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscus.kiwari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9e92cab5-2e5b-45f4-b1ca-8a84dd66f0dc";
@@ -560,10 +603,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscus.kiwari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -581,11 +621,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QG8KA4P8TE;
 				INFOPLIST_FILE = exampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscusdev..exampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -603,11 +639,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QG8KA4P8TE;
 				INFOPLIST_FILE = exampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscusdev..exampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
