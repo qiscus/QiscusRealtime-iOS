@@ -1,0 +1,25 @@
+PODS:
+  - CocoaAsyncSocket (7.6.3)
+  - CocoaMQTT (1.1.2):
+    - CocoaAsyncSocket (~> 7.6.1)
+    - SwiftyTimer (~> 2.0.0)
+  - QiscusRealtime (0.1.1):
+    - CocoaMQTT (= 1.1.2)
+  - SwiftyTimer (2.0.0)
+
+DEPENDENCIES:
+  - QiscusRealtime (from `.`)
+
+EXTERNAL SOURCES:
+  QiscusRealtime:
+    :path: .
+
+SPEC CHECKSUMS:
+  CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
+  CocoaMQTT: d33ab3cd4e329f9f1cfbb62e25306a318a606616
+  QiscusRealtime: acb2f5a3a502bff92e142d82e0d6741a383632bb
+  SwiftyTimer: 2efd74b060d69ad4f1496baf5bbedbe132125fcf
+
+PODFILE CHECKSUM: 35ec5325e227b88c44152a55f228523d931c0a19
+
+COCOAPODS: 1.4.0
