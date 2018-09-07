@@ -1,7 +1,0 @@
-fastlane/*
-build/*
-Pods/*
-Podfile.lock
-Podfile.lockbup
-**/xcuserdata/**
-**/UniversalLib.xcscheme
