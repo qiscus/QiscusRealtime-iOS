@@ -1,0 +1,3 @@
+[submodule "Cocoapods"]
+	path = Cocoapods
+	url = https://github.com/qiscus/QiscusRealtime-iOS
