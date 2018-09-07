@@ -41,11 +41,11 @@ pod install
 
 echo "\033[32m BUILDING FOR iOS \033[0m\n"
 
+echo "\033[35m ▹ Building for simulator (Release) \033[0m\n"
+xcodebuild build -workspace $WORKSPACE.xcworkspace -scheme $FRAMEWORK -sdk iphonesimulator SYMROOT=$(PWD)/$BUILD OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE=bitcode | xcpretty
+
 echo "\033[32m \n ▹ Building for device (Archive) \033[0m\n"
 xcodebuild archive -workspace $WORKSPACE.xcworkspace -scheme $FRAMEWORK -sdk iphoneos -archivePath $BUILD/Release-iphoneos.xcarchive OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE=bitcode | xcpretty
-
-echo "\033[35m ▹ Building for simulator (Release) \033[0m\n"
-xcodebuild build -workspace $WORKSPACE.xcworkspace -scheme $FRAMEWORK -sdk iphonesimulator SYMROOT=$BUILD OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE=bitcode | xcpretty
 
 echo "\033[32m Copying framework files \033[0m\n"
 mv $BUILD/Release-iphoneos.xcarchive $BUILD/$IOS_ARCHIVE_DIR
