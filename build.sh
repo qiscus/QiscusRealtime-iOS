@@ -12,7 +12,7 @@ else
     exit
 fi
 
-WORKSPACE=Example
+WORKSPACE=QiscusRealtime
 FRAMEWORK=QiscusRealtime
 PUBLISH=Cocoapods
 BUILD=build
