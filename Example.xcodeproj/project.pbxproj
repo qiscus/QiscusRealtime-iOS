@@ -65,7 +65,7 @@
 		3DCEBB372133A2FD006532EF /* QiscusRealtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiscusRealtime.h; sourceTree = "<group>"; };
 		3DCEBB392133A2FD006532EF /* MqttClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MqttClient.swift; sourceTree = "<group>"; };
 		3DCEBB3A2133A2FD006532EF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3DCEBB452133A37F006532EF /* QiscusRealtime.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QiscusRealtime.podspec; sourceTree = "<group>"; };
+		3DCEBB452133A37F006532EF /* QiscusRealtime.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QiscusRealtime.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3DCEBB492133AE1E006532EF /* QiscusRealtime.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = QiscusRealtime.podspec; path = Cocoapods/QiscusRealtime.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4BC5CD4C1FB02E787BCD57DB /* Pods-mqttLib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mqttLib.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mqttLib/Pods-mqttLib.debug.xcconfig"; sourceTree = "<group>"; };
 		4E64400563CDC4CD223522F2 /* Pods-exampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-exampleTests/Pods-exampleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -240,7 +240,6 @@
 				04C345592113FFB8004B0592 /* Frameworks */,
 				04C3455A2113FFB8004B0592 /* Resources */,
 				E9477A40E1A8FD6AB994449E /* [CP] Embed Pods Frameworks */,
-				0347935D2002D095C54609CD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,8 +258,6 @@
 				04C3456B2113FFB9004B0592 /* Sources */,
 				04C3456C2113FFB9004B0592 /* Frameworks */,
 				04C3456D2113FFB9004B0592 /* Resources */,
-				3DFAE8B0327AEDA45895911E /* [CP] Embed Pods Frameworks */,
-				307E6C9FBA7091A67710E7D3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,7 +278,6 @@
 				3DCEBB1E2133A2A7006532EF /* Frameworks */,
 				3DCEBB1F2133A2A7006532EF /* Headers */,
 				3DCEBB202133A2A7006532EF /* Resources */,
-				6624EF1C82B30901B31ECDAB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -386,66 +382,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		0347935D2002D095C54609CD /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-example/Pods-example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		307E6C9FBA7091A67710E7D3 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-exampleTests/Pods-exampleTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3DFAE8B0327AEDA45895911E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-exampleTests/Pods-exampleTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6624EF1C82B30901B31ECDAB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QiscusRealtime/Pods-QiscusRealtime-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		915755629BAC5468220F050E /* [CP] Check Pods Manifest.lock */ = {
