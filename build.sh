@@ -89,7 +89,7 @@ cp -RL LICENSE $PUBLISH
 cp -RL README.md $PUBLISH
 git add .
 git commit -m "finish build for cocoapod"
-# rm -rf $BUILD
+rm -rf $BUILD
 
 echo -n "\033[31m Mau sekalian di publish ke github (y/n)? \033[0m\n"
 old_stty_cfg=$(stty -g)
