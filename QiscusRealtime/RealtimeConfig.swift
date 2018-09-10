@@ -10,6 +10,7 @@ import Foundation
 public enum MessageStatus:Int{
     case read
     case delivered
+    case deleted
 }
 
 struct QiscusRealtimeUser {

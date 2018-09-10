@@ -14,6 +14,7 @@ enum QREventType {
     case online
     case read
     case delivery
+    case notification
     case undefined
 }
 
@@ -81,7 +82,10 @@ class MqttClient {
             // probably new comment
             if word[1] == "c" {
                 return QREventType.comment
-            }else {
+            }else if word.last == "n" {
+                return QREventType.notification
+            }
+            else {
                 return QREventType.undefined
             }
         }else if word.count == 3 {
@@ -137,6 +141,22 @@ class MqttClient {
         // {commentId}:{commentUniqueId}
         let ids = payload.components(separatedBy: ":")
         return(ids.first ?? "", ids.last ?? "")
+    }
+    
+    private func getCommentsUniqueID(fromPayload payload: String) -> [DeletedMessage]? {
+        let data = payload.data(using: .utf8)!
+        do {
+            let decoder = JSONDecoder()
+            let json = try decoder.decode(PayloadNotification.self, from:
+                data)
+            if json.actionTopic == "delete_message" {
+                return json.payload.data.deletedMessages
+            }else {
+                return nil
+            }
+        }catch {
+            return nil
+        }
     }
     
     /// get user is Online and timestampt
@@ -208,6 +228,17 @@ extension MqttClient: CocoaMQTTDelegate {
                 let room          = getRoomID(fromTopic: message.topic)
                 let (id,uniqueID) = getCommentId(fromPayload: messageData)
                 self.delegate?.didReceiveMessageStatus(roomId: room, commentId: id, commentUniqueId: uniqueID, Status: .delivered)
+                break
+            case .notification:
+                guard let response : [DeletedMessage] = self.getCommentsUniqueID(fromPayload: messageData) else { break }
+                if response.isEmpty { break }
+                for room in response {
+                    if !room.messageUniqueIDS.isEmpty {
+                        for id in room.messageUniqueIDS {
+                            self.delegate?.didReceiveMessageStatus(roomId: room.roomID, commentId: "", commentUniqueId: id, Status: .deleted)
+                        }
+                    }
+                }
                 break
             case .undefined:
                 break

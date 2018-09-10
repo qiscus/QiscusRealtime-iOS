@@ -18,6 +18,7 @@ public enum RealtimeSubscribeEndpoint {
     case delivery(roomID: String)
     // read comment inside room
     case read(roomID: String)
+    case notification(token: String)
 }
 public enum RealtimePublishEndpoint {
     // publish online status
@@ -39,6 +40,8 @@ struct RealtimeSubscriber {
             return "r/\(roomID)/\(roomID)/+/d"
         case .read(let roomID):
             return "r/\(roomID)/\(roomID)/+/r"
+        case .notification(let token):
+            return "\(token)/n"
         }
     }
 }
