@@ -25,6 +25,7 @@
 		3DCEBB442133A2FD006532EF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DCEBB3A2133A2FD006532EF /* Info.plist */; };
 		3DCEBB462133A37F006532EF /* QiscusRealtime.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3DCEBB452133A37F006532EF /* QiscusRealtime.podspec */; };
 		3DCEBB4A2133AE1E006532EF /* QiscusRealtime.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3DCEBB492133AE1E006532EF /* QiscusRealtime.podspec */; };
+		3DF95151214650C100E05007 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF95150214650C100E05007 /* Model.swift */; };
 		513A79238B521E26BB7CFE1F /* Pods_example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3F51D2C0175A916B474203 /* Pods_example.framework */; };
 		5FDD4FD146BC1FC506E477E6 /* Pods_exampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93DA9B4F7D93FE9F665F0D96 /* Pods_exampleTests.framework */; };
 		AA497620FCE279DB0664AB13 /* Pods_QiscusRealtime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099B579F62C19203D7163516 /* Pods_QiscusRealtime.framework */; };
@@ -67,6 +68,7 @@
 		3DCEBB3A2133A2FD006532EF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DCEBB452133A37F006532EF /* QiscusRealtime.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QiscusRealtime.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3DCEBB492133AE1E006532EF /* QiscusRealtime.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = QiscusRealtime.podspec; path = Cocoapods/QiscusRealtime.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		3DF95150214650C100E05007 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		4BC5CD4C1FB02E787BCD57DB /* Pods-mqttLib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mqttLib.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mqttLib/Pods-mqttLib.debug.xcconfig"; sourceTree = "<group>"; };
 		4E64400563CDC4CD223522F2 /* Pods-exampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-exampleTests/Pods-exampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		5E527A300670CB8B6D6F4822 /* Pods_mqttLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mqttLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +180,7 @@
 				3DCEBB342133A2FD006532EF /* QRLogger.swift */,
 				3DCEBB352133A2FD006532EF /* QiscusRealtime.swift */,
 				3DCEBB372133A2FD006532EF /* QiscusRealtime.h */,
+				3DF95150214650C100E05007 /* Model.swift */,
 				3DCEBB382133A2FD006532EF /* mqtt */,
 				3DCEBB3A2133A2FD006532EF /* Info.plist */,
 			);
@@ -540,6 +543,7 @@
 				3DCEBB3F2133A2FD006532EF /* QRLogger.swift in Sources */,
 				3DCEBB3B2133A2FD006532EF /* QiscusRealtimeManager.swift in Sources */,
 				3DCEBB3D2133A2FD006532EF /* Protocol.swift in Sources */,
+				3DF95151214650C100E05007 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,7 +706,10 @@
 				DEVELOPMENT_TEAM = QG8KA4P8TE;
 				INFOPLIST_FILE = example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscus.kiwari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9e92cab5-2e5b-45f4-b1ca-8a84dd66f0dc";
@@ -721,7 +728,10 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscus.kiwari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -739,7 +749,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QG8KA4P8TE;
 				INFOPLIST_FILE = exampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscusdev..exampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -757,7 +771,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QG8KA4P8TE;
 				INFOPLIST_FILE = exampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscusdev..exampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -780,7 +798,11 @@
 				INFOPLIST_FILE = QiscusRealtime/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscusdev.QiscusRealtime;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -804,7 +826,11 @@
 				INFOPLIST_FILE = QiscusRealtime/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiscusdev.QiscusRealtime;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
