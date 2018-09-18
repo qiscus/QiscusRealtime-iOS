@@ -10,10 +10,10 @@ import CocoaMQTT
 
 enum QREventType {
     case comment
-    case typing
-    case online
-    case read
-    case delivery
+    case typing // ignore by sender
+    case online // ignore by sender
+    case read // ignore by sender
+    case delivery // ignore by sender
     case notification
     case undefined
 }
@@ -110,18 +110,18 @@ class MqttClient {
         }
     }
     
-    /// Get room id from topic typing
+    /// Get room id from topic typing, read, delivered
     private func getRoomID(fromTopic topic: String) -> String {
         let r = topic.replacingOccurrences(of: "r/", with: "")
         let t = r.replacingOccurrences(of: "/t", with: "")
         let id = t.components(separatedBy: "/")
         return id.first ?? ""
     }
-    /// Get email from topic typing
+    /// Get email from topic typing, read, delivered
     private func getUser(fromTopic topic: String) -> String {
-        // r/959996/959996/hijuju/t
+        // r/959996/959996/hijuju/t /d /r
         var t = topic.components(separatedBy: "/")
-        t.removeLast() // remove "t"
+        t.removeLast() // remove /t /d /r
         return t.last ?? ""
     }
     
@@ -202,6 +202,7 @@ extension MqttClient: CocoaMQTTDelegate {
         if let messageData = message.string {
             QRLogger.debugPrint("didReceiveMessage \n===== topic: \(message.topic) \n===== data: \(messageData)")
             let type = getEventType(topic: message.topic)
+            // MARK: 
             switch type {
             case .comment:
                 //                let id = getRoomID(fromComment: messageData)
@@ -216,15 +217,20 @@ extension MqttClient: CocoaMQTTDelegate {
                 break
             case .online:
                 let user = getUserOnline(fromTopic: message.topic)
+                if user == client.username { break }
                 let (isOnline,time) = getIsOnlineAndTime(fromPayload: messageData)
                 self.delegate?.didReceiveUser(userEmail: user, isOnline: isOnline, timestamp: time)
                 break
             case .read:
+                let user = getUser(fromTopic: message.topic)
+                if user == client.username { break }
                 let room          = getRoomID(fromTopic: message.topic)
                 let (id,uniqueID) = getCommentId(fromPayload: messageData)
                 self.delegate?.didReceiveMessageStatus(roomId: room, commentId: id, commentUniqueId: uniqueID, Status: .read)
                 break
             case .delivery:
+                let user = getUser(fromTopic: message.topic)
+                if user == client.username { break }
                 let room          = getRoomID(fromTopic: message.topic)
                 let (id,uniqueID) = getCommentId(fromPayload: messageData)
                 self.delegate?.didReceiveMessageStatus(roomId: room, commentId: id, commentUniqueId: uniqueID, Status: .delivered)
