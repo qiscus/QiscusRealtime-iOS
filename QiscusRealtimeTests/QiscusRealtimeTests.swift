@@ -1,15 +1,15 @@
 //
-//  exampleTests.swift
-//  exampleTests
+//  QiscusRealtimeTests.swift
+//  QiscusRealtimeTests
 //
-//  Created by asharijuang on 03/08/18.
-//  Copyright © 2018 qiscus. All rights reserved.
+//  Created by Qiscus on 24/09/18.
+//  Copyright © 2018 Qiscus. All rights reserved.
 //
 
 import XCTest
-@testable import example
+@testable import QiscusRealtime
 
-class exampleTests: XCTestCase {
+class QiscusRealtimeTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
