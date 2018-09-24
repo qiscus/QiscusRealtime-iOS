@@ -6,7 +6,7 @@ s.summary      = "Qiscus SDK Realtime Message for iOS"
 s.description  = <<-DESC
 QiscusRealtime SDK for iOS contains Chat User Interface.
 DESC
-s.homepage     = "https://qisc.us"
+s.homepage     = "https://qiscus.com"
 s.license      = "MIT"
 s.author       = "Qiscus"
 s.source       = { :git => "https://github.com/qiscus/qiscus-sdk-ios.git", :tag => "#{s.version}" }
