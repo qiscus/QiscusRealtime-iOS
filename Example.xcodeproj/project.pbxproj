@@ -25,6 +25,8 @@
 		3DCEBB442133A2FD006532EF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DCEBB3A2133A2FD006532EF /* Info.plist */; };
 		3DCEBB462133A37F006532EF /* QiscusRealtime.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3DCEBB452133A37F006532EF /* QiscusRealtime.podspec */; };
 		3DCEBB4A2133AE1E006532EF /* QiscusRealtime.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3DCEBB492133AE1E006532EF /* QiscusRealtime.podspec */; };
+		3DE2049721588C2D00E3DF96 /* build.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3DE2049621588C2D00E3DF96 /* build.sh */; };
+		3DE2049B21588E6C00E3DF96 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3DE2049A21588E6C00E3DF96 /* README.md */; };
 		3DF95151214650C100E05007 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF95150214650C100E05007 /* Model.swift */; };
 		513A79238B521E26BB7CFE1F /* Pods_example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3F51D2C0175A916B474203 /* Pods_example.framework */; };
 		5FDD4FD146BC1FC506E477E6 /* Pods_exampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93DA9B4F7D93FE9F665F0D96 /* Pods_exampleTests.framework */; };
@@ -68,6 +70,8 @@
 		3DCEBB3A2133A2FD006532EF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DCEBB452133A37F006532EF /* QiscusRealtime.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QiscusRealtime.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3DCEBB492133AE1E006532EF /* QiscusRealtime.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = QiscusRealtime.podspec; path = Cocoapods/QiscusRealtime.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		3DE2049621588C2D00E3DF96 /* build.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = "<group>"; };
+		3DE2049A21588E6C00E3DF96 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = Cocoapods/README.md; sourceTree = "<group>"; };
 		3DF95150214650C100E05007 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		4BC5CD4C1FB02E787BCD57DB /* Pods-mqttLib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mqttLib.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mqttLib/Pods-mqttLib.debug.xcconfig"; sourceTree = "<group>"; };
 		4E64400563CDC4CD223522F2 /* Pods-exampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-exampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-exampleTests/Pods-exampleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 			children = (
 				3DCEBB452133A37F006532EF /* QiscusRealtime.podspec */,
 				3DCEBB492133AE1E006532EF /* QiscusRealtime.podspec */,
+				3DE2049621588C2D00E3DF96 /* build.sh */,
+				3DE2049A21588E6C00E3DF96 /* README.md */,
 				3DCEBB2E2133A2FD006532EF /* QiscusRealtime */,
 				04C3455D2113FFB8004B0592 /* example */,
 				04C345722113FFB9004B0592 /* exampleTests */,
@@ -345,8 +351,10 @@
 			files = (
 				04C345692113FFB9004B0592 /* LaunchScreen.storyboard in Resources */,
 				3DCEBB4A2133AE1E006532EF /* QiscusRealtime.podspec in Resources */,
+				3DE2049B21588E6C00E3DF96 /* README.md in Resources */,
 				04C345662113FFB9004B0592 /* Assets.xcassets in Resources */,
 				04C345642113FFB8004B0592 /* Main.storyboard in Resources */,
+				3DE2049721588C2D00E3DF96 /* build.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,7 +741,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = QiscusRealtime/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -761,7 +769,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = QiscusRealtime/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
