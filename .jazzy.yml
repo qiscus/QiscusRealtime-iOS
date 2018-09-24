@@ -1,8 +1,8 @@
 author: Ashari Juang
 author_url: http://qiscus.com
-github_url: https://github.com/qiscus/qiscus-sdk-ios
-root_url: https://qiscuscoreios.firebaseapp.com/Documentations
-module: QiscusCore
+github_url: https://github.com/qiscus/QiscusRealtime-iOS
+root_url: https://qiscusrealtime.firebaseapp.com/Documentations
+module: QiscusRealtime
 output: Documentations
 theme: apple
 xcodebuild_arguments: [-workspace, 'QiscusRealtime.xcworkspace', -scheme, 'QiscusRealtime']
