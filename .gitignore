@@ -1,3 +1,4 @@
+.firebase/*
 QiscusRealtime.framework
 QiscusRealtime/build/*
 QiscusRealtime/Pods/*
