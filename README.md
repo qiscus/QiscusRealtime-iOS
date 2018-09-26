@@ -13,7 +13,6 @@
 - [x] Connect with username and qiscus token.
 - [x] Publish typing and online status.
 - [x] Subscribe(receive) new comment, online status, typing, deliverd and read comment.
-- [ ] Realtime Event or Notification
 - [x] [Complete Documentation](https://qiscusrealtime.firebaseapp.com)
 
 ## Component Libraries
