@@ -87,8 +87,8 @@ zip -r QiscusRealtime.zip LICENSE $FRAMEWORK_NAME_WITH_EXT $DSYM_NAME_WITH_EXT
 echo "\033[32m Zipped resulting frameworks and dSYMs to $ZIP_DIR/QiscusCore.zip \033[0m\n"
 echo "\033[35m Finish creating universal frameworks \n Alhamdulillah 🎊 🎊 🎁 \033[0m\n"
 
-
 # copy framework, readme, etc to publish directory
+cd ../
 echo "\033[35m \n Copying framework and dSYMs to cocoapods directory \033[0m\n"
 cp -RL $BUILD/$IOS_UNIVERSAL_DIR/$FRAMEWORK_NAME_WITH_EXT $PUBLISH/$FRAMEWORK_NAME_WITH_EXT
 cp -RL $BUILD/$IOS_UNIVERSAL_DIR/$DSYM_NAME_WITH_EXT $PUBLISH/$DSYM_NAME_WITH_EXT
@@ -101,9 +101,10 @@ git commit -m "finish build for cocoapod"
 echo "\033[32m \n Checking framework arhitechture, should be 4 arhitechture include arm, i386 and x86_64 \033[0m\n"
 say -v veena Checking framework arhitechture
 pwd
-cd $FRAMEWORK_NAME_WITH_EXT
+cd $PUBLISH/FRAMEWORK_NAME_WITH_EXT
 pwd
 file $FRAMEWORK
+pwd
 
 echo -n "\033[31m Mau sekalian di publish ke github (y/n)? \033[0m\n"
 say -v veena Do you want to publish to github?
