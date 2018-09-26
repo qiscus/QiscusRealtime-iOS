@@ -90,7 +90,9 @@ echo "\033[35m Finish creating universal frameworks \n Alhamdulillah 🎊 🎊 �
 # checking arhitechture
 echo "\033[32m \n Checking framework arhitechture, should be 4 arhitechture include arm, i386 and x86_64 \033[0m\n"
 say -v veena Checking framework arhitechture
+pwd
 cd $FRAMEWORK_NAME_WITH_EXT
+pwd
 file $FRAMEWORK
 
 # copy framework, readme, etc to publish directory
