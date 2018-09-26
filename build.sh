@@ -15,7 +15,7 @@ fi
 
 WORKSPACE=QiscusRealtime
 FRAMEWORK=QiscusRealtime
-PUBLISH=cocoapods
+PUBLISH=Cocoapods
 BUILD=build
 FRAMEWORK_NAME_WITH_EXT=$FRAMEWORK.framework
 DSYM_NAME_WITH_EXT=$FRAMEWORK_NAME_WITH_EXT.dSYM
@@ -66,8 +66,8 @@ cp -RL $IOS_ARCHIVE_DSYM_PATH/$DSYM_NAME_WITH_EXT $BUILD/$IOS_UNIVERSAL_DIR/$DSY
 echo "\033[32m  ▹ Create Universal swiftmodule \033[0m\n"
 
 cp -RL $BUILD/$IOS_SIM_DIR/$FRAMEWORK_NAME_WITH_EXT/Modules/$FRAMEWORK.swiftmodule/* $BUILD/$IOS_UNIVERSAL_DIR/$FRAMEWORK_NAME_WITH_EXT/Modules/$FRAMEWORK.swiftmodule
-say -v veena lipo-ing the iOS frameworks together into universal framework
 echo "\033[35m 🤝 lipo'ing the iOS frameworks together into universal framework \033[0m\n"
+say -v veena lipo-ing the iOS frameworks together into universal framework
 lipo -create $IOS_ARCHIVE_FRAMEWORK_PATH/$FRAMEWORK $BUILD/$IOS_SIM_DIR/$FRAMEWORK_NAME_WITH_EXT/$FRAMEWORK -output $BUILD/$IOS_UNIVERSAL_DIR/$FRAMEWORK_NAME_WITH_EXT/$FRAMEWORK
 
 echo "\033[35m 🤝 lipo'ing the iOS dSYMs together into a universal dSYM \033[0m\n"
@@ -85,6 +85,10 @@ cd $ZIP_DIR
 
 say -v veena creating universal frameworks
 zip -r QiscusRealtime.zip LICENSE README.md $FRAMEWORK_NAME_WITH_EXT $DSYM_NAME_WITH_EXT
+rm -rf $FRAMEWORK_NAME_WITH_EXT
+rm -rf $DSYM_NAME_WITH_EXT
+rm LICENSE
+rm README.md
 echo "\033[32m Zipped resulting frameworks and dSYMs to $ZIP_DIR/QiscusCore.zip \033[0m\n"
 echo "\033[35m Finish creating universal frameworks \n Alhamdulillah 🎊 🎊 🎁 \033[0m\n"
 
@@ -93,14 +97,17 @@ cd ../
 echo "\033[35m \n Copying framework and dSYMs to cocoapods directory \033[0m\n"
 cp -RL LICENSE $PUBLISH
 cp -RL README.md $PUBLISH
-cp -RL $ZIP_DIR/$FRAMEWORK_NAME_WITH_EXT $PUBLISH/$FRAMEWORK_NAME_WITH_EXT
-cp -RL $ZIP_DIR/$DSYM_NAME_WITH_EXT $PUBLISH/$DSYM_NAME_WITH_EXT
+rm -rf $PUBLISH/$FRAMEWORK_NAME_WITH_EXT
+rm -rf $PUBLISH/$DSYM_NAME_WITH_EXT
+cp -RL $BUILD/$IOS_UNIVERSAL_DIR/$FRAMEWORK_NAME_WITH_EXT $PUBLISH/$FRAMEWORK_NAME_WITH_EXT
+cp -RL $BUILD/$IOS_UNIVERSAL_DIR/$DSYM_NAME_WITH_EXT $PUBLISH/$DSYM_NAME_WITH_EXT
 
 # checking arhitechture
 echo "\033[32m \n Checking framework arhitechture, should be 4 arhitechture include arm, i386 and x86_64 \033[0m\n"
 say -v veena Checking framework arhitechture
 file $PUBLISH/$FRAMEWORK_NAME_WITH_EXT/$FRAMEWORK
 pwd
+rm -rf $BUILD
 
 echo -n "\033[31m Mau sekalian di publish ke github (y/n)? \033[0m\n"
 say -v veena Do you want to publish to github?
