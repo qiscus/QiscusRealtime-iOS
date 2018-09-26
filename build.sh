@@ -51,7 +51,7 @@ xcodebuild build -workspace $WORKSPACE.xcworkspace -scheme $FRAMEWORK -sdk iphon
 
 echo "\033[32m \n ▹ Building for device (Archive) \033[0m\n"
 say -v veena Building for device, it will take a long time, – Kent Beck said, - 'Make it work, make it right, make it fast.'
-xcodebuild archive -workspace $WORKSPACE.xcworkspace -scheme $FRAMEWORK -sdk iphoneos -archivePath $BUILD/Release-iphoneos.xcarchive OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE=bitcode | xcpretty
+xcodebuild archive -workspace $WORKSPACE.xcworkspace -scheme $FRAMEWORK -sdk iphoneos -archivePath BUILD/Release-iphoneos.xcarchive OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE=bitcode | xcpretty
 
 echo "\033[32m Copying framework files \033[0m\n"
 say -v veena Copying framework
