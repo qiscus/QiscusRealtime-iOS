@@ -59,13 +59,12 @@ mv $BUILD/Release-iphoneos.xcarchive $BUILD/$IOS_ARCHIVE_DIR
 echo "\033[32m  ▹ Create Universal directory \033[0m\n"
 mkdir -p $BUILD/$IOS_UNIVERSAL_DIR
 echo "\033[32m  ▹ Create Universal frameworks \033[0m\n"
-pwd
 cp -RL $IOS_ARCHIVE_FRAMEWORK_PATH $BUILD/$IOS_UNIVERSAL_DIR/$FRAMEWORK_NAME_WITH_EXT
 echo "\033[32m  ▹ Create Universal dSYMs \033[0m\n"
-pwd
 cp -RL $IOS_ARCHIVE_DSYM_PATH/$DSYM_NAME_WITH_EXT $BUILD/$IOS_UNIVERSAL_DIR/$DSYM_NAME_WITH_EXT
 echo "\033[32m  ▹ Create Universal swiftmodule \033[0m\n"
 pwd
+ls $BUILD/$IOS_UNIVERSAL_DIR/
 cp -RL $BUILD/$IOS_SIM_DIR/$FRAMEWORK_NAME_WITH_EXT/Modules/$FRAMEWORK.swiftmodule/* $BUILD/$IOS_UNIVERSAL_DIR/$FRAMEWORK_NAME_WITH_EXT/Modules/$FRAMEWORK.swiftmodule
 say -v veena lipo-ing the iOS frameworks together into universal framework
 echo "\033[35m 🤝 lipo'ing the iOS frameworks together into universal framework \033[0m\n"
@@ -91,9 +90,7 @@ echo "\033[35m Finish creating universal frameworks \n Alhamdulillah 🎊 🎊 �
 # checking arhitechture
 echo "\033[32m \n Checking framework arhitechture, should be 4 arhitechture include arm, i386 and x86_64 \033[0m\n"
 say -v veena Checking framework arhitechture
-pwd
 cd $FRAMEWORK_NAME_WITH_EXT
-pwd
 file $FRAMEWORK
 
 # copy framework, readme, etc to publish directory
