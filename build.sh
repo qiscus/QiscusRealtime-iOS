@@ -15,7 +15,7 @@ fi
 
 WORKSPACE=QiscusRealtime
 FRAMEWORK=QiscusRealtime
-PUBLISH=Cocoapods
+PUBLISH=cocoapods
 BUILD=build
 FRAMEWORK_NAME_WITH_EXT=$FRAMEWORK.framework
 DSYM_NAME_WITH_EXT=$FRAMEWORK_NAME_WITH_EXT.dSYM
@@ -78,32 +78,28 @@ echo "\033[32m Copying iOS files into zip directory \033[0m\n"
 say -v veena Copying iOS files into zip directory
 mkdir $ZIP_DIR
 cp -RL LICENSE $ZIP_DIR
+cp -RL README.md $ZIP_DIR
 cp -RL $BUILD/$IOS_UNIVERSAL_DIR/$FRAMEWORK_NAME_WITH_EXT $ZIP_DIR/$FRAMEWORK_NAME_WITH_EXT
 cp -RL $BUILD/$IOS_UNIVERSAL_DIR/$DSYM_NAME_WITH_EXT $ZIP_DIR/$DSYM_NAME_WITH_EXT
 cd $ZIP_DIR
 
 say -v veena creating universal frameworks
-zip -r QiscusRealtime.zip LICENSE $FRAMEWORK_NAME_WITH_EXT $DSYM_NAME_WITH_EXT
+zip -r QiscusRealtime.zip LICENSE README.md $FRAMEWORK_NAME_WITH_EXT $DSYM_NAME_WITH_EXT
 echo "\033[32m Zipped resulting frameworks and dSYMs to $ZIP_DIR/QiscusCore.zip \033[0m\n"
 echo "\033[35m Finish creating universal frameworks \n Alhamdulillah 🎊 🎊 🎁 \033[0m\n"
 
 # copy framework, readme, etc to publish directory
 cd ../
 echo "\033[35m \n Copying framework and dSYMs to cocoapods directory \033[0m\n"
-cp -RL $BUILD/$IOS_UNIVERSAL_DIR/$FRAMEWORK_NAME_WITH_EXT $PUBLISH/$FRAMEWORK_NAME_WITH_EXT
-cp -RL $BUILD/$IOS_UNIVERSAL_DIR/$DSYM_NAME_WITH_EXT $PUBLISH/$DSYM_NAME_WITH_EXT
 cp -RL LICENSE $PUBLISH
 cp -RL README.md $PUBLISH
-git add .
-git commit -m "finish build for cocoapod"
+cp -RL $ZIP_DIR/$FRAMEWORK_NAME_WITH_EXT $PUBLISH/$FRAMEWORK_NAME_WITH_EXT
+cp -RL $ZIP_DIR/$DSYM_NAME_WITH_EXT $PUBLISH/$DSYM_NAME_WITH_EXT
 
 # checking arhitechture
 echo "\033[32m \n Checking framework arhitechture, should be 4 arhitechture include arm, i386 and x86_64 \033[0m\n"
 say -v veena Checking framework arhitechture
-pwd
-cd $PUBLISH/FRAMEWORK_NAME_WITH_EXT
-pwd
-file $FRAMEWORK
+file $PUBLISH/$FRAMEWORK_NAME_WITH_EXT/$FRAMEWORK
 pwd
 
 echo -n "\033[31m Mau sekalian di publish ke github (y/n)? \033[0m\n"
