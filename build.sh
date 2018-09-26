@@ -84,19 +84,21 @@ cp -RL $BUILD/$IOS_UNIVERSAL_DIR/$DSYM_NAME_WITH_EXT $ZIP_DIR/$DSYM_NAME_WITH_EX
 cd $ZIP_DIR
 
 say -v veena creating universal frameworks
-zip -r QiscusCore.zip LICENSE $FRAMEWORK_NAME_WITH_EXT $DSYM_NAME_WITH_EXT
+zip -r QiscusRealtime.zip LICENSE $FRAMEWORK_NAME_WITH_EXT $DSYM_NAME_WITH_EXT
 echo "\033[32m Zipped resulting frameworks and dSYMs to $ZIP_DIR/QiscusCore.zip \033[0m\n"
 echo "\033[35m Finish creating universal frameworks \n Alhamdulillah 🎊 🎊 🎁 \033[0m\n"
 
 # checking arhitechture
 echo "\033[32m \n Checking framework arhitechture, should be 4 arhitechture include arm, i386 and x86_64 \033[0m\n"
+say -v veena Checking framework arhitechture
+pwd
 cd $FRAMEWORK_NAME_WITH_EXT
+pwd
 file $FRAMEWORK
 
 # copy framework, readme, etc to publish directory
 pwd
 echo "\033[35m \n Copying framework and dSYMs to cocoapods directory \033[0m\n"
-say -v veena Checking framework arhitechture
 cd ../../ 
 pwd
 cp -RL $BUILD/$IOS_UNIVERSAL_DIR/$FRAMEWORK_NAME_WITH_EXT $PUBLISH/$FRAMEWORK_NAME_WITH_EXT
