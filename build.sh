@@ -130,4 +130,4 @@ git add .
 git commit -m "update framework"
 git push origin master
 echo "\033[35m Finish update cocoapod repo \n Alhamdulillah 🎉 🎉 🎉 \033[0m\n"
-say -v veena Horree 🎉, - see you next build - Ashari
+say -v veena See you next build - Ashari
