@@ -26,6 +26,7 @@ IOS_ARCHIVE_FRAMEWORK_PATH=$BUILD/$IOS_ARCHIVE_DIR/Products/Library/Frameworks/$
 IOS_ARCHIVE_DSYM_PATH=$BUILD/$IOS_ARCHIVE_DIR/dSYMs
 IOS_SIM_DIR=Release-iphonesimulator
 IOS_UNIVERSAL_DIR=Release-universal-iOS
+DSYM_PATH=$DSYM_NAME_WITH_EXT/Contents/Resources/DWARF/$FRAMEWORK
 
 echo "\033[31m Cleaning up after old builds \033[0m\n"
 say -v veena Cleaning up
@@ -51,7 +52,7 @@ xcodebuild build -workspace $WORKSPACE.xcworkspace -scheme $FRAMEWORK -configura
 
 echo "\033[32m \n ▹ Building for device (Archive) \033[0m\n"
 say -v veena Building for device, it will take a long time, – Kent Beck said, - 'Make it work, make it right, make it fast.'
-xcodebuild archive -workspace $WORKSPACE.xcworkspace -scheme $FRAMEWORK -configuration release -sdk iphoneos -archivePath BUILD/Release-iphoneos.xcarchive OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE=bitcode | xcpretty
+xcodebuild archive -workspace $WORKSPACE.xcworkspace -scheme $FRAMEWORK -sdk iphoneos -archivePath BUILD/Release-iphoneos.xcarchive OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE=bitcode | xcpretty
 
 echo "\033[32m Copying framework files \033[0m\n"
 say -v veena Copying framework
@@ -63,14 +64,13 @@ cp -RL $IOS_ARCHIVE_FRAMEWORK_PATH $BUILD/$IOS_UNIVERSAL_DIR/$FRAMEWORK_NAME_WIT
 echo "\033[32m  ▹ Create Universal dSYMs \033[0m\n"
 cp -RL $IOS_ARCHIVE_DSYM_PATH/$DSYM_NAME_WITH_EXT $BUILD/$IOS_UNIVERSAL_DIR/$DSYM_NAME_WITH_EXT
 echo "\033[32m  ▹ Create Universal swiftmodule \033[0m\n"
-pwd
-ls $BUILD/$IOS_UNIVERSAL_DIR/
+
 cp -RL $BUILD/$IOS_SIM_DIR/$FRAMEWORK_NAME_WITH_EXT/Modules/$FRAMEWORK.swiftmodule/* $BUILD/$IOS_UNIVERSAL_DIR/$FRAMEWORK_NAME_WITH_EXT/Modules/$FRAMEWORK.swiftmodule
 say -v veena lipo-ing the iOS frameworks together into universal framework
 echo "\033[35m 🤝 lipo'ing the iOS frameworks together into universal framework \033[0m\n"
 lipo -create $IOS_ARCHIVE_FRAMEWORK_PATH/$FRAMEWORK $BUILD/$IOS_SIM_DIR/$FRAMEWORK_NAME_WITH_EXT/$FRAMEWORK -output $BUILD/$IOS_UNIVERSAL_DIR/$FRAMEWORK_NAME_WITH_EXT/$FRAMEWORK
+
 echo "\033[35m 🤝 lipo'ing the iOS dSYMs together into a universal dSYM \033[0m\n"
-DSYM_PATH=$DSYM_NAME_WITH_EXT/Contents/Resources/DWARF/$FRAMEWORK
 lipo -create $IOS_ARCHIVE_DSYM_PATH/$DSYM_PATH $BUILD/$IOS_SIM_DIR/$DSYM_PATH  -output $BUILD/$IOS_UNIVERSAL_DIR/$DSYM_PATH
 
 # Rename and zip
