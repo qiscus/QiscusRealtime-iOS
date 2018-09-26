@@ -46,12 +46,12 @@ pod install
 echo "\033[32m BUILDING FOR iOS \033[0m\n"
 
 echo "\033[35m ▹ Building for simulator (Release) \033[0m\n"
-say -v veena Building for simulator, it will take a long time, - John Johnson said, - 'First, solve the problem. Then, write the code.'
-xcodebuild build -workspace $WORKSPACE.xcworkspace -scheme $FRAMEWORK -sdk iphonesimulator SYMROOT=$(PWD)/$BUILD OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE=bitcode | xcpretty
+say -v veena Building for simulator, listen carefully - 'First, solve the problem. Then, write the code.'
+xcodebuild build -workspace $WORKSPACE.xcworkspace -scheme $FRAMEWORK -configuration release -sdk iphonesimulator SYMROOT=$(PWD)/$BUILD OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE=bitcode | xcpretty
 
 echo "\033[32m \n ▹ Building for device (Archive) \033[0m\n"
 say -v veena Building for device, it will take a long time, – Kent Beck said, - 'Make it work, make it right, make it fast.'
-xcodebuild archive -workspace $WORKSPACE.xcworkspace -scheme $FRAMEWORK -sdk iphoneos -archivePath BUILD/Release-iphoneos.xcarchive OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE=bitcode | xcpretty
+xcodebuild archive -workspace $WORKSPACE.xcworkspace -scheme $FRAMEWORK -configuration release -sdk iphoneos -archivePath BUILD/Release-iphoneos.xcarchive OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE=bitcode | xcpretty
 
 echo "\033[32m Copying framework files \033[0m\n"
 say -v veena Copying framework
