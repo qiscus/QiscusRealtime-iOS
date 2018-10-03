@@ -41,6 +41,7 @@ class MqttClient {
         client.password = password
         client.willMessage = CocoaMQTTWill(topic: "u/\(username)/s", message: "0")
         client.keepAlive = 60
+        client.autoReconnect = true
         client.delegate = self
         return client.connect()
     }
@@ -226,6 +227,7 @@ extension MqttClient: CocoaMQTTDelegate {
                 if user == client.username { break }
                 let room          = getRoomID(fromTopic: message.topic)
                 let (id,uniqueID) = getCommentId(fromPayload: messageData)
+                if room.isEmpty || id.isEmpty || uniqueID.isEmpty { break }
                 self.delegate?.didReceiveMessageStatus(roomId: room, commentId: id, commentUniqueId: uniqueID, Status: .read)
                 break
             case .delivery:
@@ -233,6 +235,7 @@ extension MqttClient: CocoaMQTTDelegate {
                 if user == client.username { break }
                 let room          = getRoomID(fromTopic: message.topic)
                 let (id,uniqueID) = getCommentId(fromPayload: messageData)
+                if room.isEmpty || id.isEmpty || uniqueID.isEmpty { break }
                 self.delegate?.didReceiveMessageStatus(roomId: room, commentId: id, commentUniqueId: uniqueID, Status: .delivered)
                 break
             case .notification:
