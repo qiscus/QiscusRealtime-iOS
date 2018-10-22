@@ -49,6 +49,10 @@ public class QiscusRealtime {
         return manager.subscribe(type: endpoint)
     }
     
+    public func unsubscribe(endpoint: RealtimeSubscribeEndpoint){
+        manager.unsubscribe(type: endpoint)
+    }
+    
     public func publish(endpoint: RealtimePublishEndpoint) -> Bool {
         return manager.publish(type:endpoint)
     }

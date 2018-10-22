@@ -19,12 +19,16 @@ public enum RealtimeSubscribeEndpoint {
     // read comment inside room
     case read(roomID: String)
     case notification(token: String)
+    // subscribe room event
+    case roomEvent(roomID: String)
 }
 public enum RealtimePublishEndpoint {
     // publish online status
     case onlineStatus(value: Bool)
     // publish typing in room, typing by autenticate user
     case isTyping(value: Bool, roomID: String)
+    // publish custom room event
+    case roomEvent(roomID: String, payload: String)
 }
 
 struct RealtimeSubscriber {
@@ -42,6 +46,8 @@ struct RealtimeSubscriber {
             return "r/\(roomID)/\(roomID)/+/r"
         case .notification(let token):
             return "\(token)/n"
+        case .roomEvent(let roomID):
+            return "r/\(roomID)/\(roomID)/e"
         }
     }
 }
@@ -53,6 +59,8 @@ struct RealtimePublisher {
             return "u/\(user)/s"
         case .isTyping(_ , let roomID):
             return "r/\(roomID)/\(roomID)/\(user)/t"
+        case .roomEvent(let roomID, _):
+            return "r/\(roomID)/\(roomID)/e"
         }
     }
 }
@@ -86,6 +94,9 @@ class QiscusRealtimeManager {
                 return mqttClient.publish(topic, message: "\(value ? 1 : 0)")
             case .isTyping(let value, _):
                 return mqttClient.publish(topic, message: "\(value ? 1 : 0)")
+            case .roomEvent(_, let payload):
+                let jsonPayload : String = "{\"sender\" : \"\(u.email)\",\"data\"  : \"\(payload)\"}"
+                return mqttClient.publish(topic, message: jsonPayload)
             }
         }else {
             return false
