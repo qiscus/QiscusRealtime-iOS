@@ -95,7 +95,7 @@ class QiscusRealtimeManager {
             case .isTyping(let value, _):
                 return mqttClient.publish(topic, message: "\(value ? 1 : 0)")
             case .roomEvent(_, let payload):
-                let jsonPayload : String = "{\"sender\" : \"\(u.email)\",\"data\"  : \"\(payload)\"}"
+                let jsonPayload : String = "{\"sender\":\"\(u.email)\",\"data\":\(payload)}"
                 return mqttClient.publish(topic, message: jsonPayload)
             }
         }else {
