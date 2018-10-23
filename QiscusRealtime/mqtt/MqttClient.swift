@@ -16,6 +16,7 @@ enum QREventType {
     case delivery // ignore by sender
     case notification
     case undefined
+    case event // room event
 }
 
 class MqttClient {
@@ -95,6 +96,12 @@ class MqttClient {
             }else {
                 return QREventType.undefined
             }
+        }else if word.count == 4 {
+            if word.first == "r" && word.last == "e" {
+                return QREventType.event
+            }else {
+                return QREventType.undefined
+            }
         }else if word.count == 5 {
             // probably deliverd or read or typing
             if word.last == "t" {
@@ -110,7 +117,13 @@ class MqttClient {
             return QREventType.undefined
         }
     }
-    
+    /// Get room id from topic room event
+    private func getEventRoomID(fromTopic topic: String) -> String {
+        let r = topic.replacingOccurrences(of: "r/", with: "")
+        let t = r.replacingOccurrences(of: "/e", with: "")
+        let id = t.components(separatedBy: "/")
+        return id.first ?? ""
+    }
     /// Get room id from topic typing, read, delivered
     private func getRoomID(fromTopic topic: String) -> String {
         let r = topic.replacingOccurrences(of: "r/", with: "")
@@ -249,7 +262,11 @@ extension MqttClient: CocoaMQTTDelegate {
                     }
                 }
                 break
+            case .event:
+                let room = getEventRoomID(fromTopic: message.topic)
+                self.delegate?.didReceiveRoomEvent(roomID: room, data: messageData)
             case .undefined:
+                QRLogger.debugPrint("Receive event but topic undefined")
                 break
             }
         }
