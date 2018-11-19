@@ -6,6 +6,9 @@
 [![CocoaPods](https://img.shields.io/badge/pod-v3.0.109-green.svg)](https://github.com/qiscus/QiscusRealtime-iOS)
 
 
+## Build
+
+Build with Xcode 10 / Swift 4.2
 
 ## Features
 
