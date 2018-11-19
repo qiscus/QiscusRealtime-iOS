@@ -13,7 +13,7 @@ s.source       = { :git => "https://github.com/qiscus/QiscusRealtime-iOS", :tag 
 s.requires_arc = true
 s.ios.vendored_frameworks	= 'QiscusRealtime.framework'
 s.ios.frameworks 			= ["CFNetwork", "Security", "Foundation", "MobileCoreServices"]
-s.platform      = :ios, "10.0"
+s.platform      = :ios, "9.0"
 s.dependency 'CocoaMQTT', '1.1.3'
 
 end
