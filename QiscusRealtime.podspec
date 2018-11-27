@@ -9,7 +9,7 @@ DESC
 s.homepage     = "https://qiscus.com"
 s.license      = "MIT"
 s.author       = "Qiscus"
-s.source       = { :git => "https://github.com/qiscus/QiscusRealtime-iOS", :tag => "#{s.version}" }
+s.source       = { :git => "https://github.com/qiscus/QiscusRealtime-iOS.git", :tag => "#{s.version}" }
 s.requires_arc = true
 s.ios.vendored_frameworks	= 'QiscusRealtime.framework'
 s.ios.frameworks 			= ["CFNetwork", "Security", "Foundation", "MobileCoreServices"]
