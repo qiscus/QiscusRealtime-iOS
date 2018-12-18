@@ -49,7 +49,7 @@ class MqttClient {
     
     func publish(_ topic: String, message: String) -> Bool {
         if self.connectionState == .connected {
-            client.publish(topic, withString: message)
+            client.publish(topic, withString: message, qos: .qos2, retained: true, dup: true)
             return true
         }else {
             QRLogger.debugPrint("can't publish \(topic)")
@@ -59,7 +59,7 @@ class MqttClient {
     
     func subscribe(_ topic: String) -> Bool {
         if self.connectionState == .connected {
-            client.subscribe(topic, qos: .qos0)
+            client.subscribe(topic, qos: .qos2)
             return true
         }else {
             // delay subscribe
