@@ -23,7 +23,7 @@ public struct QiscusRealtimeConfig {
     public let appName                    : String
     public var clientID                   : String
     public var hostRealtimeServer         : String = "mqtt.qiscus.com"
-    public var port                       : UInt16 = 1883
+    public var port                       : UInt16 = 1885
     public var QiscusClientRealtimeSSL    : Bool = true
     
     public init(appName name: String, clientID id: String) {

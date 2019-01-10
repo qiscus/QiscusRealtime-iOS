@@ -116,7 +116,7 @@ class QiscusRealtimeManager {
     func connect(username: String, password: String, delegate: QiscusRealtimeDelegate? = nil){
         self.delegate = delegate
         mqttClient.delegate = delegate
-        let connecting = mqttClient.connect(username: username, password: password, ssl: config?.QiscusClientRealtimeSSL ?? false)
+        let connecting = mqttClient.connect(username: username, password: password, ssl: config?.QiscusClientRealtimeSSL ?? true)
         if connecting {
             self.user   = QiscusRealtimeUser(email: username, token: password, deviceID: "")
         }
