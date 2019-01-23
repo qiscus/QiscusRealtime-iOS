@@ -40,11 +40,13 @@ class MqttClient {
     func connect(username: String, password: String,ssl:Bool) -> Bool {
         client.username = username
         client.password = password
-        client.willMessage = CocoaMQTTWill(topic: "u/\(username)/s", message: "0")
-        client.keepAlive = 60
-        client.autoReconnect = true
-        client.delegate = self
-        client.enableSSL = ssl
+        let message         = CocoaMQTTWill(topic: "u/\(username)/s", message: "0")
+        message.retained    = true
+        client.willMessage  = message
+        client.keepAlive    = 60
+        client.autoReconnect    = true
+        client.delegate         = self
+        client.enableSSL        = ssl
         return client.connect()
     }
     
