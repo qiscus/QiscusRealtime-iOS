@@ -47,7 +47,8 @@ public protocol QiscusRealtimeDelegate {
     ///   - roomId: roomId
     ///   - commentId: commentId
     ///   - Status: status read or deliver
-    func didReceiveMessageStatus(roomId: String, commentId: String, commentUniqueId: String, Status: MessageStatus)
+    ///   - userID: userID / userEmail
+    func didReceiveMessageStatus(roomId: String, commentId: String, commentUniqueId: String, Status: MessageStatus, userEmail: String)
     
     /// You will receive message from qiscus realtime about user typing
     ///

@@ -243,16 +243,16 @@ extension MqttClient: CocoaMQTTDelegate {
                 if user == client.username { break }
                 let room          = getRoomID(fromTopic: message.topic)
                 let (id,uniqueID) = getCommentId(fromPayload: messageData)
-                if room.isEmpty || id.isEmpty || uniqueID.isEmpty { break }
-                self.delegate?.didReceiveMessageStatus(roomId: room, commentId: id, commentUniqueId: uniqueID, Status: .read)
+                if room.isEmpty || id.isEmpty || uniqueID.isEmpty || user.isEmpty { break }
+                self.delegate?.didReceiveMessageStatus(roomId: room, commentId: id, commentUniqueId: uniqueID, Status: .read, userEmail: user)
                 break
             case .delivery:
                 let user = getUser(fromTopic: message.topic)
                 if user == client.username { break }
                 let room          = getRoomID(fromTopic: message.topic)
                 let (id,uniqueID) = getCommentId(fromPayload: messageData)
-                if room.isEmpty || id.isEmpty || uniqueID.isEmpty { break }
-                self.delegate?.didReceiveMessageStatus(roomId: room, commentId: id, commentUniqueId: uniqueID, Status: .delivered)
+                if room.isEmpty || id.isEmpty || uniqueID.isEmpty || user.isEmpty { break }
+                self.delegate?.didReceiveMessageStatus(roomId: room, commentId: id, commentUniqueId: uniqueID, Status: .delivered, userEmail: user)
                 break
             case .notification:
                 guard let response : [DeletedMessage] = self.getCommentsUniqueID(fromPayload: messageData) else { break }
@@ -260,7 +260,7 @@ extension MqttClient: CocoaMQTTDelegate {
                 for room in response {
                     if !room.messageUniqueIDS.isEmpty {
                         for id in room.messageUniqueIDS {
-                            self.delegate?.didReceiveMessageStatus(roomId: room.roomID, commentId: "", commentUniqueId: id, Status: .deleted)
+                            self.delegate?.didReceiveMessageStatus(roomId: room.roomID, commentId: "", commentUniqueId: id, Status: .deleted, userEmail: "")
                         }
                     }
                 }
