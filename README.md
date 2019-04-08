@@ -56,7 +56,7 @@ $ pod install
 
 ### Security Disclosure
 
-If you believe you have identified a security vulnerability with QiscusRealtime, you should report it as soon as possible via email to contact.us@qiscus.com. Please do not post it to a public issue.
+If you believe you have identified a security vulnerability with QiscusRealtime, you should report it as soon as possible via email to juang@qiscus.co. Please do not post it to a public issue.
 
 
 ## FAQ
