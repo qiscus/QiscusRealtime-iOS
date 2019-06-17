@@ -21,6 +21,11 @@ public protocol QiscusRealtimeDelegate {
     /// - Parameter state: can be connection, connected, or disconnect
     func connectionState(change state: QiscusRealtimeConnectionState)
     
+    /// Qiscus Realtime Server connection state disconnect
+    ///
+    /// - Parameter state: can be disconnect
+    func disconnect(withError err: Error?)
+    
     /// You will receive from qiscus realtime about user status
     ///
     /// - Parameters:

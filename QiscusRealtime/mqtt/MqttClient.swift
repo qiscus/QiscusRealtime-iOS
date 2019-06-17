@@ -191,6 +191,10 @@ class MqttClient {
 }
 
 extension MqttClient: CocoaMQTTDelegate {
+    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topics: [String]) {
+        QRLogger.debugPrint("didSubscribeTopic: \(topics)")
+    }
+    
     // Optional ssl CocoaMQTTDelegate
     func mqtt(_ mqtt: CocoaMQTT, didReceive trust: SecTrust, completionHandler: @escaping (Bool) -> Void) {
         completionHandler(true)
@@ -292,6 +296,7 @@ extension MqttClient: CocoaMQTTDelegate {
     }
     
     func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
-         QRLogger.debugPrint("disconnected")
+         QRLogger.debugPrint("disconnected mqtt =\(err?.localizedDescription)")
+        self.delegate?.disconnect(withError: err)
     }
 }

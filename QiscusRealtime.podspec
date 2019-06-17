@@ -13,7 +13,7 @@ s.source       = { :git => "https://github.com/qiscus/QiscusRealtime-iOS.git", :
 s.source_files  = "QiscusRealtime/**/*.{swift}"
 s.platform      = :ios, "9.0"
 
-s.dependency 'CocoaMQTT', '~> 1.1.3'
+s.dependency 'CocoaMQTT', '~> 1.2.2'
 
 end
 
