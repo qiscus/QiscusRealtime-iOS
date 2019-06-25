@@ -21,6 +21,8 @@ public enum RealtimeSubscribeEndpoint {
     case notification(token: String)
     // subscribe room event
     case roomEvent(roomID: String)
+    
+    case roomChannel(AppId: String, roomUniqueId: String)
 }
 public enum RealtimePublishEndpoint {
     // publish online status
@@ -48,6 +50,8 @@ struct RealtimeSubscriber {
             return "\(token)/n"
         case .roomEvent(let roomID):
             return "r/\(roomID)/\(roomID)/e"
+        case .roomChannel(let appId, let roomUniqueId):
+            return "\(appId)/\(roomUniqueId)/c"
         }
     }
 }

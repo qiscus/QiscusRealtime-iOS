@@ -85,7 +85,7 @@ class MqttClient {
         // follow this doc https://quip.com/JpRjA0qjmINd
         if word.count == 2 {
             // probably new comment
-            if word[1] == "c" {
+            if word[1] == "c" || word.last == "c"{
                 return QREventType.comment
             }else if word.last == "n" {
                 return QREventType.notification
@@ -96,6 +96,8 @@ class MqttClient {
         }else if word.count == 3 {
             if word.first == "u" && word.last == "s" {
                 return QREventType.online
+            }else if word.last == "c"{
+                 return QREventType.comment
             }else {
                 return QREventType.undefined
             }
