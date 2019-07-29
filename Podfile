@@ -8,6 +8,7 @@ target 'Example' do
   # Pods for example
   #pod 'QiscusRealtime', :path => 'Cocoapods/'
   pod 'QiscusRealtime', :path => '.'
+  pod 'CocoaMQTT', :git => 'https://github.com/ariefnurputranto/CocoaMQTT.git'
 
 end
 
@@ -16,6 +17,6 @@ target 'QiscusRealtime' do
     use_frameworks!
     
     # Pods for example
-    pod 'CocoaMQTT'
+    pod 'CocoaMQTT', :git => 'https://github.com/ariefnurputranto/CocoaMQTT.git'
     
 end
