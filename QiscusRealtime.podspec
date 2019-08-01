@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "QiscusRealtime"
-s.version      = "0.3.6"
+s.version      = "0.3.8"
 s.summary      = "Qiscus SDK Realtime Message for iOS"
 s.description  = <<-DESC
 QiscusRealtime SDK for iOS contains Chat User Interface.
