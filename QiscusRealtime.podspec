@@ -11,8 +11,8 @@ s.license      = "MIT"
 s.author       = "Qiscus"
 s.source       = { :git => "https://github.com/qiscus/QiscusRealtime-iOS.git", :tag => "#{s.version}" }
 s.requires_arc = true
-s.ios.vendored_frameworks	= 'QiscusRealtime.framework'
-s.ios.frameworks 			= ["CFNetwork", "Security", "Foundation", "MobileCoreServices","CocoaMQTT.framework"]
+s.ios.vendored_frameworks	= ['QiscusRealtime.framework', 'CocoaMQTT.framework']
+s.ios.frameworks 			= ["CFNetwork", "Security", "Foundation", "MobileCoreServices"]
 s.platform      = :ios, "9.0"
 
 end
