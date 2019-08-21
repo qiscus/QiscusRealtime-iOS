@@ -50,9 +50,9 @@ class MqttClient {
         return client.connect()
     }
     
-    func publish(_ topic: String, message: String) -> Bool {
+    func publish(_ topic: String, message: String, retained:Bool = true) -> Bool {
         if self.connectionState == .connected {
-            client.publish(topic, withString: message, qos: .qos1, retained: true, dup: true)
+            client.publish(topic, withString: message, qos: .qos1, retained: retained, dup: true)
             return true
         }else {
             QRLogger.debugPrint("can't publish \(topic)")
