@@ -95,12 +95,12 @@ class QiscusRealtimeManager {
             let topic = RealtimePublisher.topic(endpoint: type, user: u.email)
             switch type {
             case .onlineStatus(let value):
-                return mqttClient.publish(topic, message: "\(value ? 1 : 0)")
+                return mqttClient.publish(topic, message: "\(value ? 1 : 0)", retained: true)
             case .isTyping(let value, _):
-                return mqttClient.publish(topic, message: "\(value ? 1 : 0)")
+                return mqttClient.publish(topic, message: "\(value ? 1 : 0)", retained: false)
             case .roomEvent(_, let payload):
                 let jsonPayload : String = "{\"sender\":\"\(u.email)\",\"data\":\(payload)}"
-                return mqttClient.publish(topic, message: jsonPayload)
+                return mqttClient.publish(topic, message: jsonPayload, retained: false)
             }
         }else {
             return false
