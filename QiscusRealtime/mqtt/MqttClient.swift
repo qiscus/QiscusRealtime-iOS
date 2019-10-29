@@ -44,7 +44,7 @@ class MqttClient {
         message.retained    = true
         client.willMessage  = message
         client.keepAlive    = 60
-        client.autoReconnect    = true
+        client.autoReconnect    = false
         client.delegate         = self
         client.enableSSL        = ssl
         return client.connect()
