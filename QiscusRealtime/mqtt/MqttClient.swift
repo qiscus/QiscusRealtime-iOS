@@ -40,19 +40,18 @@ class MqttClient {
     func connect(username: String, password: String,ssl:Bool) -> Bool {
         client.username = username
         client.password = password
-        let message         = CocoaMQTTWill(topic: "u/\(username)/s", message: "0")
-        message.retained    = true
-        client.willMessage  = message
+        client.willMessage = CocoaMQTTMessage(topic: "u/\(username)/s", string: "0",qos: .qos1, retained:  true)
         client.keepAlive    = 60
         client.autoReconnect    = false
         client.delegate         = self
         client.enableSSL        = ssl
+        
         return client.connect()
     }
     
     func publish(_ topic: String, message: String, retained:Bool = true) -> Bool {
         if self.connectionState == .connected {
-            client.publish(topic, withString: message, qos: .qos1, retained: retained, dup: true)
+            client.publish(topic, withString: message, qos: .qos1, retained: retained)
             return true
         }else {
             QRLogger.debugPrint("can't publish \(topic)")
@@ -193,9 +192,9 @@ class MqttClient {
 }
 
 extension MqttClient: CocoaMQTTDelegate {
-    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topics: [String]) {
-        QRLogger.debugPrint("didSubscribeTopic: \(topics)")
-    }
+//    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topics: [String]) {
+//        QRLogger.debugPrint("didSubscribeTopic: \(topics)")
+//    }
     
     // Optional ssl CocoaMQTTDelegate
     func mqtt(_ mqtt: CocoaMQTT, didReceive trust: SecTrust, completionHandler: @escaping (Bool) -> Void) {
@@ -281,14 +280,14 @@ extension MqttClient: CocoaMQTTDelegate {
         }
     }
     
-    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topic: String) {
-        QRLogger.debugPrint("didSubscribeTopic: \(topic)")
+    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopics topics: [String]) {
+         QRLogger.debugPrint("didSubscribeTopic: \(topics)")
     }
     
-    func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopic topic: String) {
-        QRLogger.debugPrint("didUnsubscribeTopic: \(topic)")
+    func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopics topics: [String]) {
+         QRLogger.debugPrint("didUnsubscribeTopic: \(topics)")
     }
-    
+
     func mqttDidPing(_ mqtt: CocoaMQTT) {
         QRLogger.debugPrint("PING")
     }

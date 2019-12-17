@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "QiscusRealtime"
-s.version      = "1.1.0"
+s.version      = "1.1.1"
 s.summary      = "Qiscus SDK Realtime Message for iOS"
 s.description  = <<-DESC
 QiscusRealtime SDK for iOS contains Chat User Interface.
@@ -13,7 +13,7 @@ s.source       = { :git => "https://github.com/qiscus/QiscusRealtime-iOS.git", :
 s.source_files  = "QiscusRealtime/**/*.{swift}"
 s.platform      = :ios, "9.0"
 
-s.dependency 'CocoaMQTT', '~> 1.2.2'
+s.dependency 'CocoaMQTT', '1.3.0-alpha.1'
 
 end
 
