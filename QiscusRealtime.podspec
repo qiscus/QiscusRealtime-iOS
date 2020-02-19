@@ -15,7 +15,7 @@ s.ios.vendored_frameworks	= 'QiscusRealtime.framework'
 s.ios.frameworks 			= ["CFNetwork", "Security", "Foundation", "MobileCoreServices"]
 s.platform      = :ios, "9.0"
 s.swift_version = "4.2"
-s.dependency 'CocoaMQTT', '1.3.0-alpha.1'
+s.dependency 'CocoaMQTT', '1.1.3'
 
 end
 
