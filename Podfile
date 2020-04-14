@@ -9,7 +9,7 @@ target 'Example' do
   #pod 'QiscusRealtime', :path => 'Cocoapods/'
   pod 'QiscusRealtime', :path => '.'
   #pod 'CocoaMQTT', :git => 'https://github.com/ariefnurputranto/CocoaMQTT.git'
-  pod 'CocoaMQTT', '1.3.0-alpha.1'
+  pod 'CocoaMQTT', '1.3.0-rc.1'
 
 end
 
@@ -19,6 +19,6 @@ target 'QiscusRealtime' do
     
     # Pods for example
     #pod 'CocoaMQTT', :git => 'https://github.com/ariefnurputranto/CocoaMQTT.git'
-     pod 'CocoaMQTT', '1.3.0-alpha.1'
+     pod 'CocoaMQTT', '1.3.0-rc.1'
     
 end

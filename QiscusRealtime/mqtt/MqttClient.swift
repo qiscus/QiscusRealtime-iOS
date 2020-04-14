@@ -192,6 +192,11 @@ class MqttClient {
 }
 
 extension MqttClient: CocoaMQTTDelegate {
+    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopics success: NSDictionary, failed: [String]) {
+        QRLogger.debugPrint("didSubscribeTopic success: \(success)")
+        QRLogger.debugPrint("didSubscribeTopic failed: \(failed)")
+    }
+    
 //    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topics: [String]) {
 //        QRLogger.debugPrint("didSubscribeTopic: \(topics)")
 //    }
