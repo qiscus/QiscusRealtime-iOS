@@ -6,9 +6,15 @@
 [![CocoaPods](https://img.shields.io/badge/pod-v3.0.109-green.svg)](https://github.com/qiscus/QiscusRealtime-iOS)
 
 
-## Build
+## Requirements
 
-Build with Xcode 10 / Swift 4.2
+- iOS 10.0+
+- minimum Xcode 11.4.1
+- Swift 5
+
+## Dependency
+
+- CocoaMQTT
 
 ## Features
 
@@ -43,7 +49,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'QiscusRealtime',
+    pod 'QiscusRealtime'
 end
 ```
 
@@ -53,6 +59,11 @@ Then, run the following command:
 $ pod install
 ```
 
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks. To integrate MultichannelWidget into your Xcode project using Carthage, specify it in your Cartfile:
+
+```bash
+$ github "qiscus/QiscusRealtime-iOS" "carthage-support"
+```
 
 ### Security Disclosure
 
@@ -65,6 +76,6 @@ If you believe you have identified a security vulnerability with QiscusRealtime,
 
 intead Qiscus?
 
-QiscusCore is lite version chat sdk, if you wan't to build your own chat ui best option is use QiscusCore. But, if you need in App chat quickly use Qiscus Chat SDK(build in UI and simple configuration). please visit [Qiscus](https://github.com/qiscus/qiscus-sdk-ios) to use qiscus chat sdk.
+QiscusCore is lite version chat sdk, if you wan't to build your own chat ui best option is use QiscusCore. But, if you need in App chat quickly use Qiscus Chat SDK(build in UI and simple configuration). please visit [Qiscus](https://github.com/qiscus/qiscus-chat-sdk-ios-sample) to use qiscus chat sdk.
 
 
