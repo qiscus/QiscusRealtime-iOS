@@ -3,28 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DD01AF724BCB07E0073F131 /* MqttClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD01AEF24BCB07C0073F131 /* MqttClient.swift */; };
+		3DD01AF824BCB07E0073F131 /* QDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD01AF024BCB07C0073F131 /* QDate.swift */; };
+		3DD01AF924BCB07E0073F131 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD01AF124BCB07D0073F131 /* Model.swift */; };
+		3DD01AFA24BCB07E0073F131 /* QiscusRealtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD01AF224BCB07D0073F131 /* QiscusRealtime.swift */; };
+		3DD01AFB24BCB07E0073F131 /* QiscusRealtimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD01AF324BCB07D0073F131 /* QiscusRealtimeManager.swift */; };
+		3DD01AFC24BCB07E0073F131 /* QRLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD01AF424BCB07D0073F131 /* QRLogger.swift */; };
+		3DD01AFD24BCB07E0073F131 /* RealtimeConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD01AF524BCB07D0073F131 /* RealtimeConfig.swift */; };
+		3DD01AFE24BCB07E0073F131 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD01AF624BCB07E0073F131 /* Protocol.swift */; };
 		3DE204B02158A0C300E3DF96 /* QiscusRealtime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE204A62158A0C300E3DF96 /* QiscusRealtime.framework */; };
 		3DE204B52158A0C300E3DF96 /* QiscusRealtimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE204B42158A0C300E3DF96 /* QiscusRealtimeTests.swift */; };
 		3DE204B72158A0C300E3DF96 /* QiscusRealtime.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DE204A92158A0C300E3DF96 /* QiscusRealtime.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3DE204C72158A0DA00E3DF96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE204C62158A0DA00E3DF96 /* AppDelegate.swift */; };
-		3DE204C92158A0DA00E3DF96 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE204C82158A0DA00E3DF96 /* ViewController.swift */; };
-		3DE204CC2158A0DA00E3DF96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DE204CA2158A0DA00E3DF96 /* Main.storyboard */; };
-		3DE204CE2158A0DD00E3DF96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DE204CD2158A0DD00E3DF96 /* Assets.xcassets */; };
-		3DE204D12158A0DD00E3DF96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DE204CF2158A0DD00E3DF96 /* LaunchScreen.storyboard */; };
 		3DFA092E24BCA3160053412A /* CocoaMQTT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D59097D24BC669500A0BA31 /* CocoaMQTT.framework */; };
 		3DFA092F24BCA3160053412A /* CocoaMQTT.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D59097D24BC669500A0BA31 /* CocoaMQTT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3DFA093924BCA3AF0053412A /* QiscusRealtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA093124BCA3AE0053412A /* QiscusRealtime.swift */; };
-		3DFA093A24BCA3AF0053412A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA093224BCA3AE0053412A /* Model.swift */; };
-		3DFA093B24BCA3AF0053412A /* RealtimeConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA093324BCA3AE0053412A /* RealtimeConfig.swift */; };
-		3DFA093C24BCA3AF0053412A /* QRLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA093424BCA3AE0053412A /* QRLogger.swift */; };
-		3DFA093D24BCA3AF0053412A /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA093524BCA3AE0053412A /* Protocol.swift */; };
-		3DFA093E24BCA3AF0053412A /* MqttClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA093624BCA3AE0053412A /* MqttClient.swift */; };
-		3DFA093F24BCA3AF0053412A /* QDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA093724BCA3AF0053412A /* QDate.swift */; };
-		3DFA094024BCA3AF0053412A /* QiscusRealtimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA093824BCA3AF0053412A /* QiscusRealtimeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,22 +47,27 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2777F7003CBC1BCB85A474F6 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		3D59097D24BC669500A0BA31 /* CocoaMQTT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaMQTT.framework; path = Carthage/Build/iOS/CocoaMQTT.framework; sourceTree = "<group>"; };
+		3DD01AEF24BCB07C0073F131 /* MqttClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MqttClient.swift; path = Source/QiscusRealtime/mqtt/MqttClient.swift; sourceTree = "<group>"; };
+		3DD01AF024BCB07C0073F131 /* QDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QDate.swift; path = Source/QiscusRealtime/Extension/QDate.swift; sourceTree = "<group>"; };
+		3DD01AF124BCB07D0073F131 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Model.swift; path = Source/QiscusRealtime/Model.swift; sourceTree = "<group>"; };
+		3DD01AF224BCB07D0073F131 /* QiscusRealtime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QiscusRealtime.swift; path = Source/QiscusRealtime/QiscusRealtime.swift; sourceTree = "<group>"; };
+		3DD01AF324BCB07D0073F131 /* QiscusRealtimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QiscusRealtimeManager.swift; path = Source/QiscusRealtime/QiscusRealtimeManager.swift; sourceTree = "<group>"; };
+		3DD01AF424BCB07D0073F131 /* QRLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRLogger.swift; path = Source/QiscusRealtime/QRLogger.swift; sourceTree = "<group>"; };
+		3DD01AF524BCB07D0073F131 /* RealtimeConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RealtimeConfig.swift; path = Source/QiscusRealtime/RealtimeConfig.swift; sourceTree = "<group>"; };
+		3DD01AF624BCB07E0073F131 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Protocol.swift; path = Source/QiscusRealtime/Protocol.swift; sourceTree = "<group>"; };
 		3DE204A62158A0C300E3DF96 /* QiscusRealtime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QiscusRealtime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DE204A92158A0C300E3DF96 /* QiscusRealtime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiscusRealtime.h; sourceTree = "<group>"; };
 		3DE204AA2158A0C300E3DF96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DE204AF2158A0C300E3DF96 /* QiscusRealtimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QiscusRealtimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DE204B42158A0C300E3DF96 /* QiscusRealtimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiscusRealtimeTests.swift; sourceTree = "<group>"; };
 		3DE204B62158A0C300E3DF96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3DE204C42158A0DA00E3DF96 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DE204C62158A0DA00E3DF96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DE204C82158A0DA00E3DF96 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3DE204CB2158A0DA00E3DF96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3DE204CD2158A0DD00E3DF96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DE204D02158A0DD00E3DF96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DE204D22158A0DD00E3DF96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3DE204D62158A13000E3DF96 /* Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		3DE204D72158A13000E3DF96 /* QRLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRLogger.swift; sourceTree = "<group>"; };
 		3DE204D92158A13000E3DF96 /* QDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QDate.swift; sourceTree = "<group>"; };
 		3DE204DA2158A13000E3DF96 /* QiscusRealtimeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiscusRealtimeManager.swift; sourceTree = "<group>"; };
@@ -75,17 +75,6 @@
 		3DE204DC2158A13100E3DF96 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		3DE204DE2158A13100E3DF96 /* MqttClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MqttClient.swift; sourceTree = "<group>"; };
 		3DE204DF2158A13100E3DF96 /* QiscusRealtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiscusRealtime.swift; sourceTree = "<group>"; };
-		3DFA093124BCA3AE0053412A /* QiscusRealtime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QiscusRealtime.swift; path = "Source:QiscusRealtime/QiscusRealtime.swift"; sourceTree = "<group>"; };
-		3DFA093224BCA3AE0053412A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Model.swift; path = "Source:QiscusRealtime/Model.swift"; sourceTree = "<group>"; };
-		3DFA093324BCA3AE0053412A /* RealtimeConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RealtimeConfig.swift; path = "Source:QiscusRealtime/RealtimeConfig.swift"; sourceTree = "<group>"; };
-		3DFA093424BCA3AE0053412A /* QRLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRLogger.swift; path = "Source:QiscusRealtime/QRLogger.swift"; sourceTree = "<group>"; };
-		3DFA093524BCA3AE0053412A /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Protocol.swift; path = "Source:QiscusRealtime/Protocol.swift"; sourceTree = "<group>"; };
-		3DFA093624BCA3AE0053412A /* MqttClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MqttClient.swift; path = "Source:QiscusRealtime/mqtt/MqttClient.swift"; sourceTree = "<group>"; };
-		3DFA093724BCA3AF0053412A /* QDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QDate.swift; path = "Source:QiscusRealtime/Extension/QDate.swift"; sourceTree = "<group>"; };
-		3DFA093824BCA3AF0053412A /* QiscusRealtimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QiscusRealtimeManager.swift; path = "Source:QiscusRealtime/QiscusRealtimeManager.swift"; sourceTree = "<group>"; };
-		41B8B0B65079895B2C23BF13 /* Pods-QiscusRealtime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiscusRealtime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QiscusRealtime/Pods-QiscusRealtime.debug.xcconfig"; sourceTree = "<group>"; };
-		AEBC637F4A2D9C2C35655A2D /* Pods-QiscusRealtime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiscusRealtime.release.xcconfig"; path = "Pods/Target Support Files/Pods-QiscusRealtime/Pods-QiscusRealtime.release.xcconfig"; sourceTree = "<group>"; };
-		BF8FCCD2D1E99D82E1D2FA3A /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,32 +94,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3DE204C12158A0DA00E3DF96 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		3DE2049C2158A0C300E3DF96 = {
 			isa = PBXGroup;
 			children = (
-				3DFA093224BCA3AE0053412A /* Model.swift */,
-				3DFA093624BCA3AE0053412A /* MqttClient.swift */,
-				3DFA093524BCA3AE0053412A /* Protocol.swift */,
-				3DFA093724BCA3AF0053412A /* QDate.swift */,
-				3DFA093124BCA3AE0053412A /* QiscusRealtime.swift */,
-				3DFA093824BCA3AF0053412A /* QiscusRealtimeManager.swift */,
-				3DFA093424BCA3AE0053412A /* QRLogger.swift */,
-				3DFA093324BCA3AE0053412A /* RealtimeConfig.swift */,
+				3DD01AF124BCB07D0073F131 /* Model.swift */,
+				3DD01AF624BCB07E0073F131 /* Protocol.swift */,
+				3DD01AEF24BCB07C0073F131 /* MqttClient.swift */,
+				3DD01AF024BCB07C0073F131 /* QDate.swift */,
+				3DD01AF224BCB07D0073F131 /* QiscusRealtime.swift */,
+				3DD01AF324BCB07D0073F131 /* QiscusRealtimeManager.swift */,
+				3DD01AF424BCB07D0073F131 /* QRLogger.swift */,
+				3DD01AF524BCB07D0073F131 /* RealtimeConfig.swift */,
 				3DE204A82158A0C300E3DF96 /* QiscusRealtime */,
 				3DE204B32158A0C300E3DF96 /* QiscusRealtimeTests */,
 				3DE204C52158A0DA00E3DF96 /* Example */,
 				3DE204A72158A0C300E3DF96 /* Products */,
-				C88019A2660D28A89DA2987B /* Pods */,
 				5C55734ED8740AB2A7439CC1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -140,7 +121,6 @@
 			children = (
 				3DE204A62158A0C300E3DF96 /* QiscusRealtime.framework */,
 				3DE204AF2158A0C300E3DF96 /* QiscusRealtimeTests.xctest */,
-				3DE204C42158A0DA00E3DF96 /* Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,7 +132,6 @@
 				3DE204D82158A13000E3DF96 /* Extension */,
 				3DE204DC2158A13100E3DF96 /* Model.swift */,
 				3DE204DD2158A13100E3DF96 /* mqtt */,
-				3DE204D62158A13000E3DF96 /* Protocol.swift */,
 				3DE204DF2158A13100E3DF96 /* QiscusRealtime.swift */,
 				3DE204DA2158A13000E3DF96 /* QiscusRealtimeManager.swift */,
 				3DE204D72158A13000E3DF96 /* QRLogger.swift */,
@@ -208,17 +187,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C88019A2660D28A89DA2987B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				2777F7003CBC1BCB85A474F6 /* Pods-Example.debug.xcconfig */,
-				BF8FCCD2D1E99D82E1D2FA3A /* Pods-Example.release.xcconfig */,
-				41B8B0B65079895B2C23BF13 /* Pods-QiscusRealtime.debug.xcconfig */,
-				AEBC637F4A2D9C2C35655A2D /* Pods-QiscusRealtime.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -272,26 +240,6 @@
 			productReference = 3DE204AF2158A0C300E3DF96 /* QiscusRealtimeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3DE204C32158A0DA00E3DF96 /* Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3DE204D32158A0DD00E3DF96 /* Build configuration list for PBXNativeTarget "Example" */;
-			buildPhases = (
-				E165F323105C8E1204E37291 /* [CP] Check Pods Manifest.lock */,
-				3DE204C02158A0DA00E3DF96 /* Sources */,
-				3DE204C12158A0DA00E3DF96 /* Frameworks */,
-				3DE204C22158A0DA00E3DF96 /* Resources */,
-				F0940D06190D33EBC6C514F0 /* [CP] Embed Pods Frameworks */,
-				3D256AEB24BC947E00230189 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Example;
-			productName = Example;
-			productReference = 3DE204C42158A0DA00E3DF96 /* Example.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -307,9 +255,6 @@
 						LastSwiftMigration = 0940;
 					};
 					3DE204AE2158A0C300E3DF96 = {
-						CreatedOnToolsVersion = 9.4.1;
-					};
-					3DE204C32158A0DA00E3DF96 = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
 				};
@@ -329,7 +274,6 @@
 			targets = (
 				3DE204A52158A0C300E3DF96 /* QiscusRealtime */,
 				3DE204AE2158A0C300E3DF96 /* QiscusRealtimeTests */,
-				3DE204C32158A0DA00E3DF96 /* Example */,
 			);
 		};
 /* End PBXProject section */
@@ -349,37 +293,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3DE204C22158A0DA00E3DF96 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3DE204D12158A0DD00E3DF96 /* LaunchScreen.storyboard in Resources */,
-				3DE204CE2158A0DD00E3DF96 /* Assets.xcassets in Resources */,
-				3DE204CC2158A0DA00E3DF96 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3D256AEB24BC947E00230189 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaMQTT.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
 		3D95A19024BC76B2000869C6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -404,51 +320,14 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-QiscusRealtime-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E165F323105C8E1204E37291 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F0940D06190D33EBC6C514F0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh\"\n";
+			shellScript = "
+";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -458,14 +337,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DFA093924BCA3AF0053412A /* QiscusRealtime.swift in Sources */,
-				3DFA093A24BCA3AF0053412A /* Model.swift in Sources */,
-				3DFA093B24BCA3AF0053412A /* RealtimeConfig.swift in Sources */,
-				3DFA093C24BCA3AF0053412A /* QRLogger.swift in Sources */,
-				3DFA093D24BCA3AF0053412A /* Protocol.swift in Sources */,
-				3DFA093E24BCA3AF0053412A /* MqttClient.swift in Sources */,
-				3DFA093F24BCA3AF0053412A /* QDate.swift in Sources */,
-				3DFA094024BCA3AF0053412A /* QiscusRealtimeManager.swift in Sources */,
+				3DD01AF724BCB07E0073F131 /* MqttClient.swift in Sources */,
+				3DD01AF824BCB07E0073F131 /* QDate.swift in Sources */,
+				3DD01AF924BCB07E0073F131 /* Model.swift in Sources */,
+				3DD01AFA24BCB07E0073F131 /* QiscusRealtime.swift in Sources */,
+				3DD01AFB24BCB07E0073F131 /* QiscusRealtimeManager.swift in Sources */,
+				3DD01AFC24BCB07E0073F131 /* QRLogger.swift in Sources */,
+				3DD01AFD24BCB07E0073F131 /* RealtimeConfig.swift in Sources */,
+				3DD01AFE24BCB07E0073F131 /* Protocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,15 +353,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DE204B52158A0C300E3DF96 /* QiscusRealtimeTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3DE204C02158A0DA00E3DF96 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3DE204C92158A0DA00E3DF96 /* ViewController.swift in Sources */,
-				3DE204C72158A0DA00E3DF96 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +389,7 @@
 		3DE204B82158A0C300E3DF96 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -583,6 +454,7 @@
 		3DE204B92158A0C300E3DF96 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -640,8 +512,8 @@
 		};
 		3DE204BB2158A0C300E3DF96 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41B8B0B65079895B2C23BF13 /* Pods-QiscusRealtime.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -674,8 +546,8 @@
 		};
 		3DE204BC2158A0C300E3DF96 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AEBC637F4A2D9C2C35655A2D /* Pods-QiscusRealtime.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -743,54 +615,6 @@
 			};
 			name = Release;
 		};
-		3DE204D42158A0DD00E3DF96 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2777F7003CBC1BCB85A474F6 /* Pods-Example.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QG8KA4P8TE;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qiscusdev.Example;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		3DE204D52158A0DD00E3DF96 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF8FCCD2D1E99D82E1D2FA3A /* Pods-Example.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QG8KA4P8TE;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qiscusdev.Example;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -817,15 +641,6 @@
 			buildConfigurations = (
 				3DE204BE2158A0C300E3DF96 /* Debug */,
 				3DE204BF2158A0C300E3DF96 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3DE204D32158A0DD00E3DF96 /* Build configuration list for PBXNativeTarget "Example" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3DE204D42158A0DD00E3DF96 /* Debug */,
-				3DE204D52158A0DD00E3DF96 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
