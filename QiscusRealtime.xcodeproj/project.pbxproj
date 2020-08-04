@@ -19,7 +19,6 @@
 		3DE204B52158A0C300E3DF96 /* QiscusRealtimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE204B42158A0C300E3DF96 /* QiscusRealtimeTests.swift */; };
 		3DE204B72158A0C300E3DF96 /* QiscusRealtime.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DE204A92158A0C300E3DF96 /* QiscusRealtime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3DFA092E24BCA3160053412A /* CocoaMQTT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D59097D24BC669500A0BA31 /* CocoaMQTT.framework */; };
-		3DFA092F24BCA3160053412A /* CocoaMQTT.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D59097D24BC669500A0BA31 /* CocoaMQTT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,20 +30,6 @@
 			remoteInfo = QiscusRealtime;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		3DFA093024BCA3160053412A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				3DFA092F24BCA3160053412A /* CocoaMQTT.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3D59097D24BC669500A0BA31 /* CocoaMQTT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaMQTT.framework; path = Carthage/Build/iOS/CocoaMQTT.framework; sourceTree = "<group>"; };
@@ -210,8 +195,6 @@
 				3DE204A22158A0C300E3DF96 /* Frameworks */,
 				3DE204A32158A0C300E3DF96 /* Headers */,
 				3DE204A42158A0C300E3DF96 /* Resources */,
-				3D95A19024BC76B2000869C6 /* ShellScript */,
-				3DFA093024BCA3160053412A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -296,24 +279,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3D95A19024BC76B2000869C6 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaMQTT.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
 		B2CBC5B9A02981961EC9BC69 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -513,7 +478,6 @@
 		3DE204BB2158A0C300E3DF96 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -547,7 +511,6 @@
 		3DE204BC2158A0C300E3DF96 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
