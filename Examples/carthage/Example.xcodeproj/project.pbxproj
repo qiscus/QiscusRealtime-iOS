@@ -14,31 +14,10 @@
 		3D4A7B8224BCBC4500A4FE3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A7B8124BCBC4500A4FE3D /* Assets.xcassets */; };
 		3D4A7B8524BCBC4500A4FE3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A7B8324BCBC4500A4FE3D /* LaunchScreen.storyboard */; };
 		3D4A7B9624BCC45B00A4FE3D /* QiscusRealtime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D4A7B9524BCC45B00A4FE3D /* QiscusRealtime.framework */; };
-		3D4A7B9724BCC45B00A4FE3D /* QiscusRealtime.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D4A7B9524BCC45B00A4FE3D /* QiscusRealtime.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D4A7B9924BCC4A800A4FE3D /* CocoaMQTT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D4A7B9824BCC4A800A4FE3D /* CocoaMQTT.framework */; };
-		3D4A7B9A24BCC4A800A4FE3D /* CocoaMQTT.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D4A7B9824BCC4A800A4FE3D /* CocoaMQTT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D4A7B9D24BCC54C00A4FE3D /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D4A7B9B24BCC54C00A4FE3D /* CocoaAsyncSocket.framework */; };
-		3D4A7B9E24BCC54C00A4FE3D /* CocoaAsyncSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D4A7B9B24BCC54C00A4FE3D /* CocoaAsyncSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D4A7B9F24BCC54C00A4FE3D /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D4A7B9C24BCC54C00A4FE3D /* Starscream.framework */; };
-		3D4A7BA024BCC54C00A4FE3D /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D4A7B9C24BCC54C00A4FE3D /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		3D4A7B9424BCC34300A4FE3D /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				3D4A7B9E24BCC54C00A4FE3D /* CocoaAsyncSocket.framework in Embed Frameworks */,
-				3D4A7BA024BCC54C00A4FE3D /* Starscream.framework in Embed Frameworks */,
-				3D4A7B9A24BCC4A800A4FE3D /* CocoaMQTT.framework in Embed Frameworks */,
-				3D4A7B9724BCC45B00A4FE3D /* QiscusRealtime.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3D4A7B7524BCBC3B00A4FE3D /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,7 +102,6 @@
 				3D4A7B7224BCBC3B00A4FE3D /* Frameworks */,
 				3D4A7B7324BCBC3B00A4FE3D /* Resources */,
 				3D4A7B9124BCC01100A4FE3D /* ShellScript */,
-				3D4A7B9424BCC34300A4FE3D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
