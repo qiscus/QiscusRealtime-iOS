@@ -71,3 +71,39 @@ struct DeletedMessage: Codable {
     }
 }
 
+
+struct PayloadNotificationDeleteRooms: Codable {
+    let actionTopic: String
+    let payload: PayloadDeleteRooms
+    
+    enum CodingKeys: String, CodingKey {
+        case actionTopic = "action_topic"
+        case payload
+    }
+}
+
+struct PayloadDeleteRooms: Codable {
+    let actor: ActorDeleteRooms
+    let data: DataClassDeleteRooms
+}
+
+struct ActorDeleteRooms: Codable {
+    let id, email, name: String
+}
+
+struct DataClassDeleteRooms: Codable {
+    let deletedRooms: [DeletedRoom]
+    
+    enum CodingKeys: String, CodingKey {
+        case deletedRooms = "deleted_rooms"
+    }
+}
+
+struct DeletedRoom: Codable {
+    let roomId: String
+    
+    enum CodingKeys: String, CodingKey {
+        case roomId = "id_str"
+    }
+}
+

@@ -161,6 +161,23 @@ class MqttClient {
         return(ids.first ?? "", ids.last ?? "")
     }
     
+    private func actionTopicIsDeleteRooms(fromPayload payload: String) -> Bool {
+        let data = payload.data(using: .utf8)!
+        do {
+            let decoder = JSONDecoder()
+            let json = try decoder.decode(PayloadNotification.self, from:
+                data)
+            if json.actionTopic == "delete_message" {
+                return false
+            }else {
+                return true
+            }
+        }catch {
+            return true
+        }
+    }
+    
+    
     private func getCommentsUniqueID(fromPayload payload: String) -> [DeletedMessage]? {
         let data = payload.data(using: .utf8)!
         do {
@@ -169,6 +186,22 @@ class MqttClient {
                 data)
             if json.actionTopic == "delete_message" {
                 return json.payload.data.deletedMessages
+            }else {
+                return nil
+            }
+        }catch {
+            return nil
+        }
+    }
+    
+    private func getDeleteRoomIDs(fromPayload payload: String) -> [DeletedRoom]? {
+        let data = payload.data(using: .utf8)!
+        do {
+            let decoder = JSONDecoder()
+            let json = try decoder.decode(PayloadNotificationDeleteRooms.self, from:
+                data)
+            if json.actionTopic == "clear_room" {
+                return json.payload.data.deletedRooms
             }else {
                 return nil
             }
@@ -265,12 +298,23 @@ extension MqttClient: CocoaMQTTDelegate {
                 self.delegate?.didReceiveMessageStatus(roomId: room, commentId: id, commentUniqueId: uniqueID, Status: .delivered, userEmail: user)
                 break
             case .notification:
-                guard let response : [DeletedMessage] = self.getCommentsUniqueID(fromPayload: messageData) else { break }
-                if response.isEmpty { break }
-                for room in response {
-                    if !room.messageUniqueIDS.isEmpty {
-                        for id in room.messageUniqueIDS {
-                            self.delegate?.didReceiveMessageStatus(roomId: room.roomID, commentId: "", commentUniqueId: id, Status: .deleted, userEmail: "")
+                
+                if self.actionTopicIsDeleteRooms(fromPayload: messageData) == true {
+                    guard let response : [DeletedRoom] = self.getDeleteRoomIDs(fromPayload: messageData) else { break }
+                    if response.isEmpty { break }
+                    for room in response {
+                        if !room.roomId.isEmpty {
+                            self.delegate?.didReceiveRoomDelete(roomID: room.roomId, data: messageData)
+                        }
+                    }
+                } else {
+                    guard let response : [DeletedMessage] = self.getCommentsUniqueID(fromPayload: messageData) else { break }
+                    if response.isEmpty { break }
+                    for room in response {
+                        if !room.messageUniqueIDS.isEmpty {
+                            for id in room.messageUniqueIDS {
+                                self.delegate?.didReceiveMessageStatus(roomId: room.roomID, commentId: "", commentUniqueId: id, Status: .deleted, userEmail: "")
+                            }
                         }
                     }
                 }

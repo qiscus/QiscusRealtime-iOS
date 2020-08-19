@@ -67,4 +67,10 @@ public protocol QiscusRealtimeDelegate {
     /// - Parameters:
     ///   - data: message as string JSON
     func didReceiveRoomEvent(roomID: String, data: String)
+    
+    /// You will receive message from qiscus realtime about room event.
+    ///
+    /// - Parameters:
+    ///   - data: message as string JSON
+    func didReceiveRoomDelete(roomID: String, data: String)
 }
