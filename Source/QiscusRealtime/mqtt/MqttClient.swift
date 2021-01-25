@@ -9,6 +9,7 @@ import Foundation
 import CocoaMQTT
 
 enum QREventType {
+    case updateComment
     case comment
     case typing // ignore by sender
     case online // ignore by sender
@@ -88,6 +89,8 @@ class MqttClient {
                 return QREventType.comment
             }else if word.last == "n" {
                 return QREventType.notification
+            }else if word[1] == "update" || word.last == "update" {
+                return QREventType.updateComment
             }
             else {
                 return QREventType.undefined
@@ -264,6 +267,8 @@ extension MqttClient: CocoaMQTTDelegate {
             let type = getEventType(topic: message.topic)
             // MARK: 
             switch type {
+            case .updateComment:
+                self.delegate?.didReceiveUpdatedMessage(data: messageData)
             case .comment:
                 //                let id = getRoomID(fromComment: messageData)
                 self.delegate?.didReceiveMessage(data: messageData)

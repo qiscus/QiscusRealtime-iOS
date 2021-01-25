@@ -9,6 +9,8 @@
 import Foundation
 
 public enum RealtimeSubscribeEndpoint {
+    case updateComment(token : String)
+    
     case comment(token: String)
     // publish online status
     case onlineStatus(user: String)
@@ -36,6 +38,8 @@ public enum RealtimePublishEndpoint {
 struct RealtimeSubscriber {
     static func topic(endpoint: RealtimeSubscribeEndpoint) -> String {
         switch endpoint {
+        case .updateComment(let token):
+            return "\(token)/update"
         case .comment(let token):
             return "\(token)/c"
         case .onlineStatus(let user):

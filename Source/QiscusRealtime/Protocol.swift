@@ -47,6 +47,12 @@ public protocol QiscusRealtimeDelegate {
     ///   - data: message as string JSON
     func didReceiveMessage(data: String)
     
+    /// You will receive message from qiscus realtime about comment like update comment
+    ///
+    /// - Parameters:
+    ///   - data: message as string JSON
+    func didReceiveUpdatedMessage(data: String)
+    
     /// you will receive Message comment status
     /// - Parameters:
     ///   - roomId: roomId
