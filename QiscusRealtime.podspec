@@ -15,7 +15,7 @@ s.ios.frameworks = ["CFNetwork", "Security", "Foundation", "MobileCoreServices"]
 s.requires_arc = true
 s.platform      = :ios, "10.0"
 
-s.dependency 'CocoaMQTT', '1.3.0-rc.2'
+s.dependency 'CocoaMQTT'
 
 end
 
