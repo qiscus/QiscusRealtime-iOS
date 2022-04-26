@@ -1,1 +1,1 @@
-github "amsibsam/CocoaMQTT" "carthage-platform-support"
+github "emqx/CocoaMQTT" "master"
