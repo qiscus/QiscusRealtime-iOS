@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "QiscusRealtime",
+    name: "QiscusRealtime-iOS",
     platforms: [
             .macOS(.v10_12),
             .iOS(.v10),
