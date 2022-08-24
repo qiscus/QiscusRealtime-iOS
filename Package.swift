@@ -25,9 +25,5 @@ let package = Package(
             name: "QiscusRealtime",
             dependencies: [],
 	    path: "Source"),
-        .testTarget(
-            name: "QiscusRealtimeTests",
-            path: "Sources/Test"),
-            dependencies: ["QiscusRealtime"]),
     ]
 )
