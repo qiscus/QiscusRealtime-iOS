@@ -6,7 +6,7 @@
 //  Copyright © 2017 Ahmad Athaullah. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 extension Date {
     var isToday:Bool{
