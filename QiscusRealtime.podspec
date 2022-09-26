@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "QiscusRealtime"
-s.version      = "1.5.0"
+s.version      = "1.6.0-beta.1"
 s.summary      = "Qiscus SDK Realtime Message for iOS"
 s.description  = <<-DESC
 QiscusRealtime SDK for iOS contains Chat User Interface.
@@ -15,7 +15,7 @@ s.ios.frameworks = ["CFNetwork", "Security", "Foundation", "MobileCoreServices"]
 s.requires_arc = true
 s.platform      = :ios, "10.0"
 
-s.dependency 'CocoaMQTT', '1.3.0-rc.2'
+s.dependency 'CocoaMQTT', '2.0.7'
 
 end
 

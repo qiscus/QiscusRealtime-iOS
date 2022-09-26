@@ -25,6 +25,14 @@ private var client : QiscusRealtime? = nil
 }
 
 extension ViewController :  QiscusRealtimeDelegate {
+    func didReceiveUpdatedMessage(data: String) {
+        
+    }
+    
+    func didReceiveRoomDelete(roomID: String, data: String) {
+        
+    }
+    
     func connectionState(change state: QiscusRealtimeConnectionState) {
         print("state = \(state)")
     }
