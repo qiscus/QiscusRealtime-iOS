@@ -1,2 +1,1 @@
 github "emqx/CocoaMQTT" "master"
-github "daltoniam/Starscream" >= 4.0.0

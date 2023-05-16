@@ -1,3 +1,3 @@
-github "daltoniam/Starscream" "4.0.4"
+github "daltoniam/Starscream" "3.1.1"
 github "emqx/CocoaMQTT" "dec874c56de97f3f44410e803913882f66b0ef9f"
 github "leeway1208/MqttCocoaAsyncSocket" "1.0.8"
