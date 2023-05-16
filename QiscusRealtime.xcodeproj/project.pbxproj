@@ -21,13 +21,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		20E002692A13CC8700B99D7B /* CocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E002662A13CC8600B99D7B /* CocoaAsyncSocket.xcframework */; };
-		20E0026A2A13CC8700B99D7B /* CocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20E002662A13CC8600B99D7B /* CocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		20E0026B2A13CC8700B99D7B /* Starscream.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E002672A13CC8600B99D7B /* Starscream.xcframework */; };
-		20E0026C2A13CC8700B99D7B /* Starscream.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20E002672A13CC8600B99D7B /* Starscream.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		20E0026D2A13CC8700B99D7B /* CocoaMQTT.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E002682A13CC8700B99D7B /* CocoaMQTT.xcframework */; };
-		20E0026E2A13CC8700B99D7B /* CocoaMQTT.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20E002682A13CC8700B99D7B /* CocoaMQTT.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		20E002712A13CD1B00B99D7B /* CocoaMQTT in Frameworks */ = {isa = PBXBuildFile; productRef = 20E002702A13CD1B00B99D7B /* CocoaMQTT */; };
+		20E0027C2A13DB9800B99D7B /* CocoaMQTT.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E002682A13CC8700B99D7B /* CocoaMQTT.xcframework */; };
+		20E0027D2A13DB9800B99D7B /* CocoaMQTT.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20E002682A13CC8700B99D7B /* CocoaMQTT.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20E0027E2A13DB9800B99D7B /* MqttCocoaAsyncSocket.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E002772A13D7A400B99D7B /* MqttCocoaAsyncSocket.xcframework */; };
+		20E0027F2A13DB9800B99D7B /* MqttCocoaAsyncSocket.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20E002772A13D7A400B99D7B /* MqttCocoaAsyncSocket.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20E002802A13DB9800B99D7B /* Starscream.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E002672A13CC8600B99D7B /* Starscream.xcframework */; };
+		20E002812A13DB9800B99D7B /* Starscream.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20E002672A13CC8600B99D7B /* Starscream.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		OBJ_42 /* QDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* QDate.swift */; };
 		OBJ_43 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Model.swift */; };
 		OBJ_44 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Protocol.swift */; };
@@ -59,15 +58,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		20E0026F2A13CC8700B99D7B /* Embed Frameworks */ = {
+		20E002822A13DB9800B99D7B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				20E0026C2A13CC8700B99D7B /* Starscream.xcframework in Embed Frameworks */,
-				20E0026A2A13CC8700B99D7B /* CocoaAsyncSocket.xcframework in Embed Frameworks */,
-				20E0026E2A13CC8700B99D7B /* CocoaMQTT.xcframework in Embed Frameworks */,
+				20E0027F2A13DB9800B99D7B /* MqttCocoaAsyncSocket.xcframework in Embed Frameworks */,
+				20E002812A13DB9800B99D7B /* Starscream.xcframework in Embed Frameworks */,
+				20E0027D2A13DB9800B99D7B /* CocoaMQTT.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +77,7 @@
 		20E002662A13CC8600B99D7B /* CocoaAsyncSocket.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaAsyncSocket.xcframework; path = Carthage/Build/CocoaAsyncSocket.xcframework; sourceTree = "<group>"; };
 		20E002672A13CC8600B99D7B /* Starscream.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Starscream.xcframework; path = Carthage/Build/Starscream.xcframework; sourceTree = "<group>"; };
 		20E002682A13CC8700B99D7B /* CocoaMQTT.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaMQTT.xcframework; path = Carthage/Build/CocoaMQTT.xcframework; sourceTree = "<group>"; };
+		20E002772A13D7A400B99D7B /* MqttCocoaAsyncSocket.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MqttCocoaAsyncSocket.xcframework; path = Carthage/Build/MqttCocoaAsyncSocket.xcframework; sourceTree = "<group>"; };
 		OBJ_10 /* QDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QDate.swift; sourceTree = "<group>"; };
 		OBJ_11 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		OBJ_12 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
@@ -109,10 +109,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				20E002712A13CD1B00B99D7B /* CocoaMQTT in Frameworks */,
-				20E0026B2A13CC8700B99D7B /* Starscream.xcframework in Frameworks */,
-				20E002692A13CC8700B99D7B /* CocoaAsyncSocket.xcframework in Frameworks */,
-				20E0026D2A13CC8700B99D7B /* CocoaMQTT.xcframework in Frameworks */,
+				20E0027E2A13DB9800B99D7B /* MqttCocoaAsyncSocket.xcframework in Frameworks */,
+				20E002802A13DB9800B99D7B /* Starscream.xcframework in Frameworks */,
+				20E0027C2A13DB9800B99D7B /* CocoaMQTT.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +129,7 @@
 		20E002652A13CC8600B99D7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				20E002772A13D7A400B99D7B /* MqttCocoaAsyncSocket.xcframework */,
 				20E002662A13CC8600B99D7B /* CocoaAsyncSocket.xcframework */,
 				20E002682A13CC8700B99D7B /* CocoaMQTT.xcframework */,
 				20E002672A13CC8600B99D7B /* Starscream.xcframework */,
@@ -235,7 +235,7 @@
 			buildPhases = (
 				OBJ_41 /* Sources */,
 				OBJ_50 /* Frameworks */,
-				20E0026F2A13CC8700B99D7B /* Embed Frameworks */,
+				20E002822A13DB9800B99D7B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -243,7 +243,6 @@
 			);
 			name = QiscusRealtime;
 			packageProductDependencies = (
-				20E002702A13CD1B00B99D7B /* CocoaMQTT */,
 			);
 			productName = QiscusRealtime;
 			productReference = "qiscusrealtime::QiscusRealtime::Product" /* QiscusRealtime.framework */;
@@ -634,14 +633,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		20E002702A13CD1B00B99D7B /* CocoaMQTT */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 20B8B3E428E18DD00037CCCE /* XCRemoteSwiftPackageReference "CocoaMQTT" */;
-			productName = CocoaMQTT;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = OBJ_1 /* Project object */;
 }
