@@ -1,1 +1,1 @@
-github "arief011192/CocoaMQTT" "carthage-platform-support"
+github "emqx/CocoaMQTT" "master"
