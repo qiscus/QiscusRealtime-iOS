@@ -16,6 +16,10 @@ public enum RealtimeSubscribeEndpoint {
     case onlineStatus(user: String)
     // get typing inside room
     case typing(roomID: String)
+    
+    // get typing AI inside room
+    case typingAI(roomID: String)
+    
     // delivery or receive comment inside room
     case delivery(roomID: String)
     // read comment inside room
@@ -46,6 +50,8 @@ struct RealtimeSubscriber {
             return "u/\(user)/s"
         case .typing(let roomID):
             return "r/\(roomID)/\(roomID)/+/t"
+        case .typingAI(let roomID):
+            return "r/\(roomID)/typing"
         case .delivery(let roomID):
             return "r/\(roomID)/\(roomID)/+/d"
         case .read(let roomID):

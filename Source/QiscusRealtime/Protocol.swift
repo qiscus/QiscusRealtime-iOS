@@ -68,6 +68,14 @@ public protocol QiscusRealtimeDelegate {
     ///   - userEmail: userEmail (String)
     func didReceiveUser(typing: Bool, roomId: String, userEmail: String)
     
+    
+    /// You will receive message from qiscus realtime about useAIr typing
+    ///
+    /// - Parameters:
+    ///   - roomId: roomId (String)
+    ///   - data: data (String)
+    func didReceiveUserAI(roomId: String, data : String)
+    
     /// You will receive message from qiscus realtime about room event.
     ///
     /// - Parameters:

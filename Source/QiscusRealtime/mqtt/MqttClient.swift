@@ -12,6 +12,7 @@ enum QREventType {
     case updateComment
     case comment
     case typing // ignore by sender
+    case typingAI // ignore by sender
     case online // ignore by sender
     case read // ignore by sender
     case delivery // ignore by sender
@@ -100,6 +101,8 @@ class MqttClient {
                 return QREventType.online
             }else if word.last == "c"{
                  return QREventType.comment
+            }else if word.last == "typing"{
+                return QREventType.typingAI
             }else {
                 return QREventType.undefined
             }
@@ -135,6 +138,14 @@ class MqttClient {
     private func getRoomID(fromTopic topic: String) -> String {
         let r = topic.replacingOccurrences(of: "r/", with: "")
         let t = r.replacingOccurrences(of: "/t", with: "")
+        let id = t.components(separatedBy: "/")
+        return id.first ?? ""
+    }
+    
+    /// Get room id from topic typing, read, delivered
+    private func getRoomIDAI(fromTopic topic: String) -> String {
+        let r = topic.replacingOccurrences(of: "r/", with: "")
+        let t = r.replacingOccurrences(of: "/typing", with: "")
         let id = t.components(separatedBy: "/")
         return id.first ?? ""
     }
@@ -279,6 +290,10 @@ extension MqttClient: CocoaMQTTDelegate {
                 let value = Int(messageData) ?? 0 // convert string to int default 0
                 let istyping = value != 0 // convert int to bool, default false
                 self.delegate?.didReceiveUser(typing: istyping, roomId: id, userEmail: user)
+                break
+            case .typingAI:
+                let id = getRoomIDAI(fromTopic: message.topic)
+                self.delegate?.didReceiveUserAI(roomId: id, data : messageData)
                 break
             case .online:
                 let user = getUserOnline(fromTopic: message.topic)
