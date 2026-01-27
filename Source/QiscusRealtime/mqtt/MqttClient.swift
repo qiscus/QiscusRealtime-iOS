@@ -7,6 +7,7 @@
 
 import Foundation
 import CocoaMQTT
+import Security
 
 enum QREventType {
     case updateComment
@@ -39,10 +40,22 @@ class MqttClient {
         client = CocoaMQTT.init(clientID: clientID, host: host, port: port)
     }
     
-    func connect(username: String, password: String,ssl:Bool) -> Bool {
-        client.username = username
-        client.password = password
-        client.willMessage = CocoaMQTTMessage(topic: "u/\(username)/s", string: "0",qos: .qos1, retained:  true)
+//    func connect(username: String, password: String,ssl:Bool) -> Bool {
+//        client.username = username
+//        client.password = password
+//        client.willMessage = CocoaMQTTMessage(topic: "u/\(username)/s", string: "0",qos: .qos1, retained:  true)
+//        client.keepAlive    = 60
+//        client.autoReconnect    = false
+//        client.delegate         = self
+//        client.enableSSL        = ssl
+//        
+//        return client.connect()
+//    }
+    
+    func connect(usernameSDK: String, usernameMQTT: String, passwordMQTT: String,ssl:Bool) -> Bool {
+        client.username = usernameMQTT
+        client.password = passwordMQTT
+        client.willMessage = CocoaMQTTMessage(topic: "u/\(usernameSDK)/s", string: "0",qos: .qos1, retained:  true)
         client.keepAlive    = 60
         client.autoReconnect    = false
         client.delegate         = self

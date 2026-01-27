@@ -127,12 +127,12 @@ class QiscusRealtimeManager {
         mqttClient.unsubscribe(topic)
     }
 
-    func connect(username: String, password: String, delegate: QiscusRealtimeDelegate? = nil){
+    func connect(usernameSDK: String, passwordSDK: String, usernameMQTT: String , passwordMQTT: String, delegate: QiscusRealtimeDelegate? = nil){
         self.delegate = delegate
         mqttClient.delegate = delegate
-        let connecting = mqttClient.connect(username: username, password: password, ssl: config?.QiscusClientRealtimeSSL ?? true)
+        let connecting = mqttClient.connect(usernameSDK: usernameSDK, usernameMQTT: usernameMQTT, passwordMQTT: passwordMQTT, ssl: config?.QiscusClientRealtimeSSL ?? true)
         if connecting {
-            self.user   = QiscusRealtimeUser(email: username, token: password, deviceID: "")
+            self.user   = QiscusRealtimeUser(email: usernameSDK, token: passwordSDK, deviceID: "")
         }
     }
     

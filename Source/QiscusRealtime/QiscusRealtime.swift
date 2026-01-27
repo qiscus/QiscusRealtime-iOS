@@ -41,8 +41,9 @@ public class QiscusRealtime {
     ///   - username: qiscus user email
     ///   - password: qiscus token
     ///   - delegate: set delegate to get the event
-    public func connect(username: String, password: String, delegate: QiscusRealtimeDelegate? = nil){
-        manager.connect(username: username, password: password, delegate: delegate)
+    public func connect(usernameSDK: String, passwordSDK: String, usernameMQTT: String, passwordMQTT: String, delegate: QiscusRealtimeDelegate? = nil){
+        
+        manager.connect(usernameSDK: usernameSDK, passwordSDK: passwordSDK, usernameMQTT: usernameMQTT, passwordMQTT: passwordMQTT, delegate: delegate)
     }
     
     public func subscribe(endpoint: RealtimeSubscribeEndpoint) -> Bool {
